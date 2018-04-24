@@ -8,7 +8,7 @@ bot.on("ready", async () => {
 
   //bot.user.setActivity("bots", {type: "MAKING"});
 
-  bot.user.setGame("MegaBot | /test help");
+  bot.user.setGame("${servers} Servers | /test help");
 });
 
 bot.on("message", async message => {
