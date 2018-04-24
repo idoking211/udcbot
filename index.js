@@ -169,7 +169,7 @@ bot.on("message", async message => {
   if (cmd === `${prefix}say`){
  		message.delete()
          const embed = new Discord.RichEmbed()
- 		.setColor(0x954D23)
+ 		.setColor(#3b3a3a)
  		.setDescription(args.join(" "));
  		message.channel.send({embed})
 }
@@ -188,6 +188,7 @@ bot.on("message", async message => {
     .addField("/serverinfo", "Server Informations.")
     .addField("/botinfo", "Bot Informations.")
     .addField("/membercount", "Member Count.")
+    .addField("/say (message)", "say anything on embed message")
     .addField("/help", "Help Commands.");
 
     return message.author.send(botembed);
