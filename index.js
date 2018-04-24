@@ -160,12 +160,12 @@ bot.on("message", async message => {
     .setDescription("**Commands List**")
     .setColor("#268ccf")
     .setThumbnail(bicon)
-    .addField("${prefix}kick", "kick a User.")
-    .addField("${prefix}ban", "ban a User.")
-    .addField("${prefix}report", "report about User.")
-    .addField("${prefix}serverinfo", "Server Informations.")
-    .addField("${prefix}botinfo", "Bot Informations.")
-    .addField("${prefix}help", "Help Commands.");
+    .addField(${prefix}"kick", "kick a User.")
+    .addField(${prefix}"ban", "ban a User.")
+    .addField(${prefix}"report", "report about User.")
+    .addField(${prefix}"serverinfo", "Server Informations.")
+    .addField(${prefix}"botinfo", "Bot Informations.")
+    .addField(${prefix}"help", "Help Commands.");
 
     return message.author.send(botembed);
   }
