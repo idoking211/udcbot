@@ -63,6 +63,35 @@ bot.on("message", async message => {
     return;
   }
 
+  if(cmd === `${prefix}warn`){
+
+    //!warn @daeshan askin for it
+
+    let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(!rUser) return message.channel.send("/warn (@user) (reason)\n** **\n**Example:**\n** **\n/warn @user break the rules\n** **\nits will warn the user for brekaing the rules");
+    let rReason = args.join(" ").slice(22);
+    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("No can do pal!");
+    if(rUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be warned!");
+
+    let reportEmbed = new Discord.RichEmbed()
+    .setDescription("~Warn~")
+    .setColor("#0b5509")
+    .addField("Warned User", `${rUser} with ID: ${rUser.id}`)
+    .addField("Warned By", `${message.author} with ID: ${message.author.id}`)
+    .addField("Channel", message.channel)
+    .addField("Time", message.createdAt)
+    .addField("Reason", rreason);
+
+    let reportschannel = message.guild.channels.find(`name`, "incidents");
+    if(!reportschannel) return message.channel.send("Couldn't find incidents channel.");
+
+
+    message.delete().catch(O_o=>{});
+    reportschannel.send(reportEmbed);
+
+    return;
+  }
+
   if(cmd === `${prefix}ban`){
 
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
