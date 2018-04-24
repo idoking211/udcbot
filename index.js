@@ -169,7 +169,7 @@ bot.on("message", async message => {
   if (cmd === `${prefix}say`){
  		message.delete()
          const embed = new Discord.RichEmbed()
- 		.setColor(#3b3a3a)
+ 		.setColor(0x4d433e)
  		.setDescription(args.join(" "));
  		message.channel.send({embed})
 }
