@@ -155,7 +155,7 @@ bot.on("message", async message => {
 
   if(cmd === `${prefix}help`){
 
-    let bicon = bot.user.displayAvatarURL;
+    //let bicon = bot.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
     .setDescription("**Commands List**")
     .setColor("#268ccf")
