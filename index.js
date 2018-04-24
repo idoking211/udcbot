@@ -166,6 +166,14 @@ bot.on("message", async message => {
   }
 
 
+  if (cmd === `${prefix}say`){
+ 		message.delete()
+         const embed = new Discord.RichEmbed()
+ 		.setColor(0x954D23)
+ 		.setDescription(args.join(" "));
+ 		message.channel.send({embed})
+}
+
 
   if(cmd === `${prefix}help`){
 
