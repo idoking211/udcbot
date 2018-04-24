@@ -46,8 +46,8 @@ bot.on("message", async message => {
     if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be kicked!");
 
     let kickEmbed = new Discord.RichEmbed()
-    .setDescription("~Kick~")
-    .setColor("#e56b00")
+    .setDescription("**Kick Command**")
+    .setColor("#d83c3c")
     .addField("Kicked User", `${kUser} with ID ${kUser.id}`)
     .addField("Kicked By", `<@${message.author.id}> with ID ${message.author.id}`)
     .addField("Kicked In", message.channel)
@@ -72,10 +72,10 @@ bot.on("message", async message => {
     if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be kicked!");
 
     let banEmbed = new Discord.RichEmbed()
-    .setDescription("~Ban~")
+    .setDescription("${user.author.Avatar} **Ban**")
     .setColor("#bc0000")
-    .addField("Banned User", `${bUser} with ID ${bUser.id}`)
-    .addField("Banned By", `<@${message.author.id}> with ID ${message.author.id}`)
+    .addField("**Banned**", `${bUser}`)
+    .addField("**Moderator**", `<@${message.author.id}>`)
     .addField("Banned In", message.channel)
     .addField("Time", message.createdAt)
     .addField("Reason", bReason);
