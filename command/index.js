@@ -121,3 +121,5 @@ bot.on("message", async message => {
   }, cdseconds * 1000)
 
 });
+
+bot.login(process.env.BOT_TOKEN);
