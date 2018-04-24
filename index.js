@@ -54,8 +54,8 @@ bot.on("message", async message => {
     .addField("Tiime", message.createdAt)
     .addField("Reason", kReason);
 
-    let kickChannel = message.guild.channels.find(`name`, "incidents");
-    if(!kickChannel) return message.channel.send("Can't find incidents channel.");
+    let kickChannel = message.guild.channels.find(`name`, "mod-log");
+    if(!kickChannel) return message.channel.send("Can't find mod-log channel.");
 
     message.guild.member(kUser).kick(kReason);
     kickChannel.send(kickEmbed);
@@ -80,8 +80,8 @@ bot.on("message", async message => {
     .addField("Time", message.createdAt)
     .addField("Reason", bReason);
 
-    let incidentchannel = message.guild.channels.find(`name`, "incidents");
-    if(!incidentchannel) return message.channel.send("Can't find incidents channel.");
+    let incidentchannel = message.guild.channels.find(`name`, "mod-log");
+    if(!incidentchannel) return message.channel.send("Can't find mod-log channel.");
 
     message.guild.member(bUser).ban(bReason);
     incidentchannel.send(banEmbed);
@@ -108,8 +108,8 @@ bot.on("message", async message => {
     .addField("Time", message.createdAt)
     .addField("Reason", rreason);
 
-    let reportschannel = message.guild.channels.find(`name`, "reports");
-    if(!reportschannel) return message.channel.send("Couldn't find reports channel.");
+    let reportschannel = message.guild.channels.find(`name`, "mod-log");
+    if(!reportschannel) return message.channel.send("Couldn't find mod-log channel.");
 
 
     message.delete().catch(O_o=>{});
