@@ -138,6 +138,20 @@ bot.on("message", async message => {
 
 
 
+
+  if(cmd === `${prefix}membercount`){
+
+    let sicon = message.guild.iconURL;
+    let serverembed = new Discord.RichEmbed()
+    .setDescription("**Member Count**")
+    .setColor("#eb8f1b")
+    .setThumbnail(sicon)
+    .addField("Members", message.guild.memberCount);
+
+    return message.channel.send(serverembed);
+  }
+
+
   if(cmd === `${prefix}botinfo`){
 
     let bicon = bot.user.displayAvatarURL;
@@ -155,7 +169,7 @@ bot.on("message", async message => {
 
   if(cmd === `${prefix}help`){
 
-    //let bicon = bot.user.displayAvatarURL;
+    let bicon = bot.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
     .setDescription("**Commands List**")
     .setColor("#268ccf")
@@ -165,6 +179,7 @@ bot.on("message", async message => {
     .addField("/report (user) (reason)", "report about User.")
     .addField("/serverinfo", "Server Informations.")
     .addField("/botinfo", "Bot Informations.")
+    .addField("/membercount", "Member Count.")
     .addField("/help", "Help Commands.");
 
     return message.author.send(botembed);
