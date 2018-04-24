@@ -46,12 +46,12 @@ bot.on("message", async message => {
     if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be kicked!");
 
     let kickEmbed = new Discord.RichEmbed()
-    .setDescription("**Kick Command**")
+    .setDescription("**Kick**")
     .setColor("#d83c3c")
-    .addField("Kicked User", `${kUser} with ID ${kUser.id}`)
-    .addField("Kicked By", `<@${message.author.id}> with ID ${message.author.id}`)
+    .addField("Kicked", `${kUser}`)
+    .addField("Moderator", `<@${message.author.id}>`)
     .addField("Kicked In", message.channel)
-    .addField("Tiime", message.createdAt)
+    .addField("Time", message.createdAt)
     .addField("Reason", kReason);
 
     let kickChannel = message.guild.channels.find(`name`, "mod-log");
@@ -72,7 +72,7 @@ bot.on("message", async message => {
     if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be kicked!");
 
     let banEmbed = new Discord.RichEmbed()
-    .setDescription("${user.author.Avatar} **Ban**")
+    .setDescription("**Ban**")
     .setColor("#bc0000")
     .addField("**Banned**", `${bUser}`)
     .addField("**Moderator**", `<@${message.author.id}>`)
@@ -101,9 +101,9 @@ bot.on("message", async message => {
 
     let reportEmbed = new Discord.RichEmbed()
     .setDescription("Reports")
-    .setColor("#15f153")
-    .addField("Reported User", `${rUser} with ID: ${rUser.id}`)
-    .addField("Reported By", `${message.author} with ID: ${message.author.id}`)
+    .setColor("#ffdc00")
+    .addField("Reported", `${rUser}`)
+    .addField("Moderator", `${message.author}`)
     .addField("Channel", message.channel)
     .addField("Time", message.createdAt)
     .addField("Reason", rreason);
@@ -149,6 +149,25 @@ bot.on("message", async message => {
     .addField("Created On", bot.user.createdAt);
 
     return message.channel.send(botembed);
+  }
+
+
+
+  if(cmd === `${prefix}help`){
+
+    let bicon = bot.user.displayAvatarURL;
+    let botembed = new Discord.RichEmbed()
+    .setDescription("**Commands List**")
+    .setColor("#268ccf")
+    .setThumbnail(bicon)
+    .addField("${prefix}kick", "kick a User.")
+    .addField("${prefix}ban", "ban a User.")
+    .addField("${prefix}report", "report about User.")
+    .addField("${prefix}serverinfo", "Server Informations.")
+    .addField("${prefix}botinfo", "Bot Informations.")
+    .addField("${prefix}help", "Help Commands.");
+
+    return message.author.send(botembed);
   }
 
 });
