@@ -6,9 +6,9 @@ const bot = new Discord.Client({disableEveryone: true});
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online!`);
 
-  bot.user.setActivity("bots", {type: "MAKING"});
+  //bot.user.setActivity("bots", {type: "MAKING"});
 
-  //bot.user.setGame("on SourceCade!");
+  bot.user.setGame("MegaBot | /test help");
 });
 
 bot.on("message", async message => {
