@@ -3,12 +3,27 @@ const Discord = require("discord.js");
 
 const bot = new Discord.Client({disableEveryone: true});
 
-bot.on("ready", async () => {
-  console.log(`${bot.user.username} is online!`);
+//bot.on("ready", async () => {
+  //console.log(`${bot.user.username} is online!`);
 
   //bot.user.setActivity("bots", {type: "MAKING"});
 
-  bot.user.setGame("${server} Servers | /help");
+  //bot.user.setGame("${server} Servers | /help");
+
+client.on('ready', () => {
+  console.log(`Bot is Online!`);
+  client.user.setGame(`${client.guilds.size} servers | /help`);
+});
+
+// Updates the bot's status if he joins a server
+client.on("guildCreate", guild => {
+   client.user.setGame(`${client.guilds.size} servers | /help`);
+});
+
+/// Updates the bot's status if he leaves a servers
+client.on("guildDelete", guild => {
+    client.user.setGame(
+        `${client.guilds.size} servers | /help`);
 });
 
 bot.on("message", async message => {
