@@ -67,27 +67,27 @@ bot.on("message", async message => {
 
     //!warn @daeshan askin for it
 
-    let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!rUser) return message.channel.send("/warn (@user) (reason)\n** **\n**Example:**\n** **\n/warn @user break the rules\n** **\nits will warn the user for brekaing the rules");
-    let rReason = args.join(" ").slice(22);
+    let wUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(!wUser) return message.channel.send("/warn (@user) (reason)\n** **\n**Example:**\n** **\n/warn @user break the rules\n** **\nits will warn the user for brekaing the rules");
+    let wReason = args.join(" ").slice(22);
     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("No can do pal!");
-    if(rUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be warned!");
+    if(wUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be warned!");
 
-    let reportEmbed = new Discord.RichEmbed()
+    let warnEmbed = new Discord.RichEmbed()
     .setDescription("~Warn~")
     .setColor("#0b5509")
-    .addField("Warned User", `${rUser} with ID: ${rUser.id}`)
+    .addField("Warned User", `${wUser} with ID: ${wUser.id}`)
     .addField("Warned By", `${message.author} with ID: ${message.author.id}`)
     .addField("Channel", message.channel)
     .addField("Time", message.createdAt)
-    .addField("Reason", rreason);
+    .addField("Reason", wreason);
 
-    let reportschannel = message.guild.channels.find(`name`, "incidents");
-    if(!reportschannel) return message.channel.send("Couldn't find incidents channel.");
+    let incidentschannel = message.guild.channels.find(`name`, "incidents");
+    if(!incidentschannel) return message.channel.send("Couldn't find incidents channel.");
 
 
     message.delete().catch(O_o=>{});
-    reportschannel.send(reportEmbed);
+    incidentschannel.send(incidentsEmbed);
 
     return;
   }
