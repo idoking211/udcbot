@@ -45,6 +45,12 @@ bot.on('guildMemberAdd', member => {
   channel.send(`Welcome to the server, ${member}`);
 });
 
+bot.on('guildMemberRemove', member => {
+  const channel = member.guild.channels.find('name', 'welcome');
+  if (!channel) return;
+  channel.send(`${member}, left the Server`);
+});
+
 
   if(cmd === `${prefix}kick`){
 
