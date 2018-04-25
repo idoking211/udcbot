@@ -31,6 +31,7 @@ bot.user.setActivity(
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
 
+
   if(cmd === `${prefix}kick`){
 
     //!kick @daeshan askin for it
@@ -59,6 +60,7 @@ bot.user.setActivity(
     return;
   }
 
+
   if(cmd === `${prefix}ban`){
 
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
@@ -85,6 +87,7 @@ bot.user.setActivity(
 
     return;
   }
+
 
   if(cmd === `${prefix}report`){
 
@@ -113,6 +116,7 @@ bot.user.setActivity(
     return;
   }
 
+
   if(cmd === `${prefix}serverinfo`){
 
     let sicon = message.guild.iconURL;
@@ -128,6 +132,7 @@ bot.user.setActivity(
     return message.channel.send(serverembed);
   }
 
+
   if(cmd === `${prefix}membercount`){
 
     let sicon = message.guild.iconURL;
@@ -139,6 +144,7 @@ bot.user.setActivity(
 
     return message.channel.send(serverembed);
   }
+
 
   if(cmd === `${prefix}botinfo`){
 
@@ -153,6 +159,7 @@ bot.user.setActivity(
     return message.channel.send(botembed);
   }
 
+
   if (cmd === `${prefix}say`){
  		message.delete()
          const embed = new Discord.RichEmbed()
@@ -160,6 +167,7 @@ bot.user.setActivity(
  		.setDescription(args.join(" "));
  		message.channel.send({embed})
 }
+
 
   if(cmd === `${prefix}help`){
 
@@ -179,6 +187,7 @@ bot.user.setActivity(
 
     return message.author.send(botembed);
   }
+
 
 });
 
