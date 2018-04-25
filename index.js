@@ -203,4 +203,10 @@ bot.on("message", async message => {
   }
 });
 
+client.on('message', msg => {
+  if (msg.content === '/ping') {
+    msg.reply(`Pong! The ping is **${(client.ping).toFixed(0)}**ms!  :ping_pong:`)
+  }
+});
+
 bot.login(process.env.BOT_TOKEN);
