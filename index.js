@@ -204,7 +204,7 @@ bot.on("message", async message => {
 });
 
 const prefix = "/";
-client.on("message", (message) => {
+bot.on("message", (message) => {
 
   if (!message.content.startsWith(prefix)) return;
 
@@ -215,7 +215,7 @@ client.on("message", (message) => {
       description: "** **\nhttps://discord.gg/sdQDrYT",
       footer: 
       {
-          icon_url: client.user.avatarURL,
+          icon_url: bot.user.avatarURL,
           text: "Banana"
       }
     }});
