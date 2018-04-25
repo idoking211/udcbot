@@ -203,7 +203,7 @@ bot.on("message", async message => {
   }
 });
 
-const prefix = "/";
+const prefix = botconfig.prefix;
 bot.on("message", (message) => {
 
   if (!message.content.startsWith(prefix)) return;
