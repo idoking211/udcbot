@@ -199,6 +199,7 @@ bot.on("message", async message => {
     .addField("/avatar @user", "Avatar of the user.")
     .addField("/ping", "Ping Pong, your Wifi");
 
+    return message.author.send(botembed);
   }
 });
 
