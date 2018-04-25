@@ -217,8 +217,10 @@ if(message.content.startsWith(prefix + "avatar ")) { //IF for the command.
            message.channel.sendMessage(output); //We send the output in the current channel.
     } else {
           message.reply("Invalid user."); //Reply with a mention saying "Invalid user."
-    }
-  }});
+       }
+     }});
+   }  
+ });
 
 bot.on('message', msg => {
   if (msg.content === '/ping') {
