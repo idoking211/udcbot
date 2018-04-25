@@ -186,14 +186,18 @@ bot.on("message", async message => {
 
     let bicon = bot.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
-    .setDescription("**Commands List**")
+    .setDescription("Moderation Commands")
     .setColor("#268ccf")
     .setThumbnail(bicon)
-    .addField("Moderation")
     .addField("/kick (user) (reason)", "kick a User.")
     .addField("/ban (user) (reason)", "ban a User.")
-    .addField("/report (user) (reason)", "report about User.")
-    .addField("Server")
+    .addField("/report (user) (reason)", "report about User.");
+
+    let bicon = bot.user.displayAvatarURL;
+    let botembed = new Discord.RichEmbed()
+    .setDescription("Server Commands")
+    .setColor("#268ccf")
+    .setThumbnail(bicon)
     .addField("/serverinfo", "Server Informations.")
     .addField("/botinfo", "Bot Informations.")
     .addField("/membercount", "Member Count.")
