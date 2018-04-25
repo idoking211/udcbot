@@ -194,6 +194,8 @@ bot.on("message", async message => {
 
     return message.author.send(botembed);
   }
+
+
 });
 
 bot.login(process.env.BOT_TOKEN);
