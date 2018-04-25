@@ -50,19 +50,6 @@ client.on("message", (message) => {
       }
     }});
   } else
-  if (message.content === (prefix + "help")) {
-    message.author.sendMessage({embed: {
-      color: 0xffff00,
-      title: "\n \n__:הפקודות של בננה__",
-      description: "** **\n**/ping** - מראה לך כמה פינג יש לך\n**/discord** - הקישור לדיסקורד\n**/serverinfo** - Server Information\n**/membercount** - Member Count\n**/roles** - מראה לך את הרולים של הסרבר\n**/staff** - מראה לך איזה אנשים נמצאים בצוות שלנו\n**/help** - מראה לך את התפריט הזה",
-      footer: 
-      { 
-          icon_url: client.user.avatarURL,
-          text: "Banana"
-      }
-    }});
-     message.reply(":mailbox_with_no_mail: תבדוק את ההודעות הפרטיות שלך");
-  } else
     if (message.content == (prefix + "invite")) {
     message.author.sendMessage("**__Invite The Bot:__**\n \nhttps://discordapp.com/api/oauth2/authorize?client_id=436126804365803520&permissions=0&scope=bot");
     message.reply("Please check your direct messages :mailbox_with_no_mail:");
@@ -157,6 +144,30 @@ client.on("message", (message) => {
      }});
    }
  });
+
+  let messageArray = message.content.split(" ");
+  let cmd = messageArray[0];
+  let args = messageArray.slice(1);
+
+  if(cmd === `${prefix}help`){
+
+    let bicon = bot.user.displayAvatarURL;
+    let botembed = new Discord.RichEmbed()
+    .setDescription("**Commands List**")
+    .setColor("#268ccf")
+    .setThumbnail(bicon)
+    .addField("/kick (user) (reason)", "kick a User.")
+    .addField("/ban (user) (reason)", "ban a User.")
+    .addField("/report (user) (reason)", "report about User.")
+    .addField("/serverinfo", "Server Informations.")
+    .addField("/botinfo", "Bot Informations.")
+    .addField("/membercount", "Member Count.")
+    .addField("/say (message)", "say anything on embed message")
+    .addField("/help", "Help Commands.");
+
+    return message.author.send(botembed);
+  }
+});
 
 client.on('message', msg => {
   if (msg.content === '/ping') {
