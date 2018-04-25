@@ -206,7 +206,7 @@ bot.on("message", async message => {
 const prefix = botconfig.prefix;
 bot.on("message", (message) => {
 
-  if (!message.content.startsWith(prefix)) return;
+  if(!message.content.startsWith(prefix)) return;
 
  if(message.content.startsWith(prefix + "avatar ")) { //IF for the command.
      if(message.mentions.users.first()) { //Check if the message has a mention in it.
@@ -218,8 +218,6 @@ bot.on("message", (message) => {
           message.reply("You need to Mention someone."); //Reply with a mention saying "Invalid user."}
        }
      }});
-   }  
- });
 
 bot.on('message', msg => {
   if (msg.content === '/ping') {
