@@ -88,7 +88,6 @@ bot.on("message", async message => {
     message.guild.member(bUser).ban(bReason);
     incidentchannel.send(banEmbed);
 
-
     return;
   }
 
