@@ -186,7 +186,7 @@ bot.on("message", async message => {
 
     let bicon = bot.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
-    .setDescription("**Commands List**", "** **")
+    .setDescription("**Commands List**")
     .setColor("#268ccf")
     .setThumbnail(bicon)
     .addField("Moderation", "** **")
