@@ -160,7 +160,7 @@ bot.on("message", async message => {
     .setColor("#15f153")
     .setThumbnail(bicon)
     .addField("Bot Name", bot.user.username)
-    .addField("Bot Status", bot.user.Status)
+    .addField("Bot Status", ":online~1:")
     .addField("Created On", bot.user.createdAt);
 
     return message.channel.send(botembed);
