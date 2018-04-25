@@ -192,7 +192,6 @@ bot.on("message", async message => {
     .addField("/kick (user) (reason)", "kick a User.")
     .addField("/ban (user) (reason)", "ban a User.")
     .addField("/report (user) (reason)", "report about User.");
-    let bicon = bot.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
     .setDescription("Server Commands")
     .setColor("#268ccf")
