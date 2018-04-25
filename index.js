@@ -117,6 +117,8 @@ bot.user.setActivity(
   }
 
 
+
+
   if(cmd === `${prefix}serverinfo`){
 
     let sicon = message.guild.iconURL;
@@ -133,6 +135,8 @@ bot.user.setActivity(
   }
 
 
+
+
   if(cmd === `${prefix}membercount`){
 
     let sicon = message.guild.iconURL;
@@ -144,6 +148,8 @@ bot.user.setActivity(
 
     return message.channel.send(serverembed);
   }
+
+
 
 
   if(cmd === `${prefix}botinfo`){
@@ -160,6 +166,8 @@ bot.user.setActivity(
   }
 
 
+
+
   if (cmd === `${prefix}say`){
  		message.delete()
          const embed = new Discord.RichEmbed()
@@ -167,6 +175,8 @@ bot.user.setActivity(
  		.setDescription(args.join(" "));
  		message.channel.send({embed})
 }
+
+
 
 
   if(cmd === `${prefix}help`){
@@ -187,9 +197,6 @@ bot.user.setActivity(
 
     return message.author.send(botembed);
   }
-
-
 });
-
 
 bot.login(process.env.BOT_TOKEN);
