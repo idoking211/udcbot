@@ -4,20 +4,20 @@ const client = new Discord.Client();
 
 const bot = new Discord.Client({disableEveryone: true});
 
-client.on("ready", async () => {
+bot.on("ready", async () => {
   console.log(`Bot is Online!`);
-client.user.setActivity(`${client.guilds.size} servers | /help`, {type: "WATCHING"});
+bot.user.setActivity(`${bot.guilds.size} servers | /help`, {type: "WATCHING"});
 });
 
 // Updates the bot's status if he joins a server
-client.on("guildCreate", guild => {
-client.user.setActivity(`${client.guilds.size} servers | /help`, {type: "WATCHING"});
+bot.on("guildCreate", guild => {
+bot.user.setActivity(`${bot.guilds.size} servers | /help`, {type: "WATCHING"});
 });
 
 /// Updates the bot's status if he leaves a servers
-client.on("guildDelete", guild => {
-client.user.setActivity(
-        `${client.guilds.size} servers | /help`, {type: "WATCHING"});
+bot.on("guildDelete", guild => {
+bot.user.setActivity(
+        `${bot.guilds.size} servers | /help`, {type: "WATCHING"});
 });
 
   let prefix = botconfig.prefix;
