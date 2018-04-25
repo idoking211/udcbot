@@ -203,6 +203,25 @@ bot.on("message", async message => {
   }
 });
 
+const prefix = "/";
+client.on("message", (message) => {
+
+  if (!message.content.startsWith(prefix)) return;
+
+  if (message.content === (prefix + "discord")) {
+    message.channel.send({embed: {
+      color: 3447003,
+      title: "\n \n__:קישור לדיסקורד__",
+      description: "** **\nhttps://discord.gg/sdQDrYT",
+      footer: 
+      {
+          icon_url: client.user.avatarURL,
+          text: "Banana"
+      }
+    }});
+   }
+ });
+
 bot.on('message', msg => {
   if (msg.content === '/ping') {
     msg.reply(`Pong! The ping is **${(bot.ping).toFixed(0)}**ms!  :ping_pong:`)
