@@ -186,19 +186,15 @@ bot.on("message", async message => {
 
     let bicon = bot.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
-    .setDescription("**Commands List**")
+    .setDescription("**Commands List**\n**Moderator**")
     .setColor("#268ccf")
     .setThumbnail(bicon)
-    .addField("**Moderator**", "** **")
     .addField("/kick (user) (reason)", "kick a User.")
     .addField("/ban (user) (reason)", "ban a User.")
     .addField("/report (user) (reason)", "report about User.")
     .addField("/serverinfo", "Server Informations.")
     .addField("/botinfo", "Bot Informations.")
     .addField("/membercount", "Member Count.")
-    .addField("**Music**", "** **")
-    .addField("Soon")
-    .addField("**Commands**", "** **")
     .addField("/say (message)", "say your message.")
     .addField("/avatar @user", "Avatar of the user.")
     .addField("/ping", "Ping Pong, your Wifi");
