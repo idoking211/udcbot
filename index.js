@@ -1,6 +1,5 @@
 const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
-const client = new Discord.Client();
 
 const bot = new Discord.Client({disableEveryone: true});
 
@@ -204,9 +203,9 @@ bot.on("message", async message => {
   }
 });
 
-client.on('message', msg => {
+bot.on('message', msg => {
   if (msg.content === '/ping') {
-    msg.reply(`Pong! The ping is **${(client.ping).toFixed(0)}**ms!  :ping_pong:`)
+    msg.reply(`Pong! The ping is **${(bot.ping).toFixed(0)}**ms!  :ping_pong:`)
   }
 });
 
