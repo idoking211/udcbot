@@ -216,8 +216,8 @@ bot.on("message", (message) => {
            message.channel.sendMessage(output); //We send the output in the current channel.
     } else {
           message.reply("You need to Mention someone"); //Reply with a mention saying "Invalid user."}
-   }  
- });
+       }
+     }});
 
 bot.on('message', msg => {
   if (msg.content === '/ping') {
