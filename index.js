@@ -232,10 +232,4 @@ bot.on('message', msg => {
   }
 });
 
-bot.on('message', msg => {
-  if (msg.content === '/help') {
-    msg.reply(`Check your Dms`)
-  }
-});
-
 bot.login(process.env.BOT_TOKEN);
