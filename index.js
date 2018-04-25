@@ -189,7 +189,7 @@ bot.on("message", async message => {
     .setDescription("**Commands List**")
     .setColor("#268ccf")
     .setThumbnail(bicon)
-    .addField("Moderation\n\n/kick (user) (reason)", "kick a User.")
+    .addField("Moderation\n /kick (user) (reason)", "kick a User.")
     .addField("/ban (user) (reason)", "ban a User.")
     .addField("/report (user) (reason)", "report about User.")
     .addField("/serverinfo", "Server Informations.")
