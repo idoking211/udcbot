@@ -191,4 +191,5 @@ bot.user.setActivity(
 
 });
 
+
 bot.login(process.env.BOT_TOKEN);
