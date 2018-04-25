@@ -192,6 +192,10 @@ bot.on("message", async message => {
     .addField("/kick (user) (reason)", "kick a User.")
     .addField("/ban (user) (reason)", "ban a User.")
     .addField("/report (user) (reason)", "report about User.");
+
+    return message.author.send(botembed);
+
+    let bicon = bot.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
     .setDescription("Server Commands")
     .setColor("#268ccf")
@@ -202,8 +206,6 @@ bot.on("message", async message => {
     .addField("/say (message)", "say your message.")
     .addField("/avatar @user", "Avatar of the user.")
     .addField("/ping", "Ping Pong, your Wifi");
-
-    return message.author.send(botembed);
   }
 });
 
