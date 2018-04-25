@@ -3,13 +3,6 @@ const Discord = require("discord.js");
 
 const bot = new Discord.Client({disableEveryone: true});
 
-//bot.on("ready", async () => {
-  //console.log(`${bot.user.username} is online!`);
-
-  //bot.user.setActivity("bots", {type: "MAKING"});
-
-  //bot.user.setGame("${server} Servers | /help");
-
 bot.on("ready", async () => {
   console.log(`Bot is Online!`);
 bot.user.setActivity(`${bot.guilds.size} servers | /help`, {type: "WATCHING"});
@@ -26,33 +19,36 @@ bot.user.setActivity(
         `${bot.guilds.size} servers | /help`, {type: "WATCHING"});
 });
 
+bot.on("message", async message => {
+  if(message.author.bot) return;
+  if(message.channel.type === "dm") return;
+
   let prefix = botconfig.prefix;
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
-
 
   if(cmd === `${prefix}kick`){
 
     //!kick @daeshan askin for it
 
     let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!kUser) return message.channel.send("/kick (@user) (reason)\n** **\n**Example:**\n** **\n/kick @user break the rules\n** **\nits will kick the user for brekaing the rules");
+    if(!kUser) return message.channel.send("Can't find user!");
     let kReason = args.join(" ").slice(22);
     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("No can do pal!");
     if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be kicked!");
 
     let kickEmbed = new Discord.RichEmbed()
-    .setDescription("**Kick**")
-    .setColor("#d83c3c")
-    .addField("Kicked", `${kUser}`)
-    .addField("Moderator", `<@${message.author.id}>`)
+    .setDescription("~Kick~")
+    .setColor("#e56b00")
+    .addField("Kicked User", `${kUser} with ID ${kUser.id}`)
+    .addField("Kicked By", `<@${message.author.id}> with ID ${message.author.id}`)
     .addField("Kicked In", message.channel)
-    .addField("Time", message.createdAt)
+    .addField("Tiime", message.createdAt)
     .addField("Reason", kReason);
 
-    let kickChannel = message.guild.channels.find(`name`, "mod-log");
-    if(!kickChannel) return message.channel.send("Can't find mod-log channel.");
+    let kickChannel = message.guild.channels.find(`name`, "incidents");
+    if(!kickChannel) return message.channel.send("Can't find incidents channel.");
 
     message.guild.member(kUser).kick(kReason);
     kickChannel.send(kickEmbed);
@@ -60,26 +56,25 @@ bot.user.setActivity(
     return;
   }
 
-
   if(cmd === `${prefix}ban`){
 
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!bUser) return message.channel.send("/ban (@user) (time) (reason)\n** **\n**Example:**\n** **\n/ban @user 1 h break the rules\n** **\nits will ban the user for one hour for brekaing the rules");
+    if(!bUser) return message.channel.send("Can't find user!");
     let bReason = args.join(" ").slice(22);
     if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send("No can do pal!");
     if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be kicked!");
 
     let banEmbed = new Discord.RichEmbed()
-    .setDescription("**Ban**")
+    .setDescription("~Ban~")
     .setColor("#bc0000")
-    .addField("**Banned**", `${bUser}`)
-    .addField("**Moderator**", `<@${message.author.id}>`)
+    .addField("Banned User", `${bUser} with ID ${bUser.id}`)
+    .addField("Banned By", `<@${message.author.id}> with ID ${message.author.id}`)
     .addField("Banned In", message.channel)
     .addField("Time", message.createdAt)
     .addField("Reason", bReason);
 
-    let incidentchannel = message.guild.channels.find(`name`, "mod-log");
-    if(!incidentchannel) return message.channel.send("Can't find mod-log channel.");
+    let incidentchannel = message.guild.channels.find(`name`, "incidents");
+    if(!incidentchannel) return message.channel.send("Can't find incidents channel.");
 
     message.guild.member(bUser).ban(bReason);
     incidentchannel.send(banEmbed);
@@ -94,20 +89,20 @@ bot.user.setActivity(
     //!report @ned this is the reason
 
     let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!rUser) return message.channel.send("/report (@user) (reason)\n** **\n**Example:**\n** **\n/report @user break the rules\n** **\nits will report the user for brekaing the rules");
+    if(!rUser) return message.channel.send("Couldn't find user.");
     let rreason = args.join(" ").slice(22);
 
     let reportEmbed = new Discord.RichEmbed()
     .setDescription("Reports")
-    .setColor("#ffdc00")
-    .addField("Reported", `${rUser}`)
-    .addField("Moderator", `${message.author}`)
+    .setColor("#15f153")
+    .addField("Reported User", `${rUser} with ID: ${rUser.id}`)
+    .addField("Reported By", `${message.author} with ID: ${message.author.id}`)
     .addField("Channel", message.channel)
     .addField("Time", message.createdAt)
     .addField("Reason", rreason);
 
-    let reportschannel = message.guild.channels.find(`name`, "mod-log");
-    if(!reportschannel) return message.channel.send("Couldn't find mod-log channel.");
+    let reportschannel = message.guild.channels.find(`name`, "reports");
+    if(!reportschannel) return message.channel.send("Couldn't find reports channel.");
 
 
     message.delete().catch(O_o=>{});
@@ -115,6 +110,8 @@ bot.user.setActivity(
 
     return;
   }
+
+
 
 
   if(cmd === `${prefix}serverinfo`){
@@ -133,18 +130,6 @@ bot.user.setActivity(
   }
 
 
-  if(cmd === `${prefix}membercount`){
-
-    let sicon = message.guild.iconURL;
-    let serverembed = new Discord.RichEmbed()
-    .setDescription("**Member Count**")
-    .setColor("#eb8f1b")
-    .setThumbnail(sicon)
-    .addField("Members", message.guild.memberCount);
-
-    return message.channel.send(serverembed);
-  }
-
 
   if(cmd === `${prefix}botinfo`){
 
@@ -158,36 +143,6 @@ bot.user.setActivity(
 
     return message.channel.send(botembed);
   }
-
-
-  if (cmd === `${prefix}say`){
- 		message.delete()
-         const embed = new Discord.RichEmbed()
- 		.setColor(0x4d433e)
- 		.setDescription(args.join(" "));
- 		message.channel.send({embed})
-}
-
-
-  if(cmd === `${prefix}help`){
-
-    let bicon = bot.user.displayAvatarURL;
-    let botembed = new Discord.RichEmbed()
-    .setDescription("**Commands List**")
-    .setColor("#268ccf")
-    .setThumbnail(bicon)
-    .addField("/kick (user) (reason)", "kick a User.")
-    .addField("/ban (user) (reason)", "ban a User.")
-    .addField("/report (user) (reason)", "report about User.")
-    .addField("/serverinfo", "Server Informations.")
-    .addField("/botinfo", "Bot Informations.")
-    .addField("/membercount", "Member Count.")
-    .addField("/say (message)", "say anything on embed message")
-    .addField("/help", "Help Commands.");
-
-    return message.author.send(botembed);
-  }
-
 
 });
 
