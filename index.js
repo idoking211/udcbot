@@ -92,6 +92,34 @@ bot.on("message", async message => {
     return;
   }
 
+  if(cmd === `${prefix}unban`){
+
+    // Unban a user by ID (or with a user/guild member object)
+    guild.unban('some user ID')
+    .then(user => console.log(Unbanned ${user.username} from ${guild}))
+    .catch(console.error);
+    if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send("No can do pal!");
+    if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be kicked!");
+
+    let banEmbed = new Discord.RichEmbed()
+    .setDescription("**Ban**")
+    .setColor("#bc0000")
+    .addField("**Banned**", `${bUser}`)
+    .addField("**Moderator**", `<@${message.author.id}>`)
+    .addField("Banned In", message.channel)
+    .addField("Time", message.createdAt)
+    .addField("Reason", bReason);
+
+    let incidentchannel = message.guild.channels.find(`name`, "mod-log");
+    if(!incidentchannel) return message.channel.send("Can't find mod-log channel.");
+
+    message.guild.member(bUser).ban(bReason);
+    incidentchannel.send(banEmbed);
+
+
+    return;
+  }
+
 
   if(cmd === `${prefix}report`){
 
