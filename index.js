@@ -31,6 +31,7 @@ bot.user.setActivity(
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
 
+
   if(cmd === `${prefix}kick`){
 
     //!kick @daeshan askin for it
