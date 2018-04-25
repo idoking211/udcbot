@@ -3,6 +3,8 @@ const Discord = require("discord.js");
 
 const bot = new Discord.Client({disableEveryone: true});
 
+const newUsers = [];
+
 //bot.on("ready", async () => {
   //console.log(`${bot.user.username} is online!`);
 
@@ -35,20 +37,21 @@ bot.on("message", async message => {
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
 
-// Create an event listener for new guild members
-bot.on('guildMemberAdd', member => {
-  // Send the message to a designated channel on a server:
-  const channel = member.guild.channels.find('name', 'welcome');
-  // Do nothing if the channel wasn't found on this server
-  if (!channel) return;
-  // Send the message, mentioning the member
-  channel.send(`Welcome to the server, ${member}`);
+bot.on("guildMemberAdd", (member) => {
+  const guild = member.guild;
+  if (!newUsers[guild.id]) newUsers[guild.id] = new Discord.Collection();
+  newUsers[guild.id].set(member.id, member.user);
+
+  if (newUsers[guild.id].size > 10) {
+    const userlist = newUsers[guild.id].map(u => u.toString()).join(" ");
+    guild.channels.get(guild.id).send("Welcome our new users!\n" + userlist);
+    newUsers[guild.id].clear();
+  }
 });
 
-bot.on('guildMemberRemove', member => {
-  const channel = member.guild.channels.find('name', 'welcome');
-  if (!channel) return;
-  channel.send(`${member}, left the Server`);
+bot.on("guildMemberRemove", (member) => {
+  const guild = member.guild;
+  if (newUsers[guild.id].has(member.id)) newUsers.delete(member.id);
 });
 
 
