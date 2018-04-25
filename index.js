@@ -195,6 +195,7 @@ bot.on("message", async message => {
 
     return message.author.send(botembed);
 
+  }
     let bicon = bot.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
     .setDescription("Server Commands")
@@ -208,6 +209,7 @@ bot.on("message", async message => {
     .addField("/ping", "Ping Pong, your Wifi");
 
     return message.author.send(botembed);
+
   }
 });
 
