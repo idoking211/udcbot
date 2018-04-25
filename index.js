@@ -2,12 +2,29 @@ const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const client = new Discord.Client();
 
-client.on('ready', () => {
-  client.user.setStatus("online");
-  client.user.setGame("/help | Banana");
+const bot = new Discord.Client({disableEveryone: true});
+
+bot.on("ready", async () => {
+  console.log(`Bot is Online!`);
+bot.user.setActivity(`${bot.guilds.size} servers | /help`, {type: "WATCHING"});
 });
 
-const prefix = "/";
+// Updates the bot's status if he joins a server
+bot.on("guildCreate", guild => {
+bot.user.setActivity(`${bot.guilds.size} servers | /help`, {type: "WATCHING"});
+});
+
+/// Updates the bot's status if he leaves a servers
+bot.on("guildDelete", guild => {
+bot.user.setActivity(
+        `${bot.guilds.size} servers | /help`, {type: "WATCHING"});
+});
+
+  let prefix = botconfig.prefix;
+  let messageArray = message.content.split(" ");
+  let cmd = messageArray[0];
+  let args = messageArray.slice(1);
+
 client.on("message", (message) => {
 
   if (!message.content.startsWith(prefix)) return;
