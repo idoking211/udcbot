@@ -189,14 +189,19 @@ bot.on("message", async message => {
     .setDescription("**Commands List**")
     .setColor("#268ccf")
     .setThumbnail(bicon)
+    .setDescription("**Moderator**")
     .addField("/kick (user) (reason)", "kick a User.")
     .addField("/ban (user) (reason)", "ban a User.")
     .addField("/report (user) (reason)", "report about User.")
     .addField("/serverinfo", "Server Informations.")
     .addField("/botinfo", "Bot Informations.")
     .addField("/membercount", "Member Count.")
-    .addField("/say (message)", "say anything on embed message")
-    .addField("/help", "Help Commands.");
+    .setDescription("**Music**")
+    .addField("Soon")
+    .setDescription("**Commands**")
+    .addField("/say (message)", "say your message.")
+    .addField("/avatar @user", "Avatar of the user.")
+    .addField("/ping", "Ping Pong, your Wifi");
 
     return message.author.send(botembed);
   }
