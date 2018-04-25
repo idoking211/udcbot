@@ -192,7 +192,7 @@ bot.on("message", async message => {
     .addField("/kick (user) (reason)", "kick a User.")
     .addField("/ban (user) (reason)", "ban a User.")
     .addField("/report (user) (reason)", "report about User.")
-    return message.author.send(botembed);
+    message.channel.send({embed});
     embed.setDescription("Server Commands")
     .addField("/serverinfo", "Server Informations.")
     .addField("/botinfo", "Bot Informations.")
