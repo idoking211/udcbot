@@ -187,7 +187,7 @@ bot.on("message", async message => {
 
     let bicon = bot.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
-    .setDescription("**Commands List**")
+    .setDescription("Help Commands")
     .setColor("#268ccf")
     .setThumbnail(bicon)
     .addField("/kick (user) (reason)", "kick a User.")
@@ -196,12 +196,29 @@ bot.on("message", async message => {
     .addField("/serverinfo", "Server Informations.")
     .addField("/botinfo", "Bot Informations.")
     .addField("/membercount", "Member Count.")
-    .addField("/say (message)", "say anything on embed message")
-    .addField("/help", "Help Commands.");
+    .addField("/say (message)", "say your message.")
+    .addField("/avatar @user", "Avatar of the user.")
+    .addField("/ping", "Ping Pong, your Wifi");
 
     return message.author.send(botembed);
   }
 });
+
+const prefix = botconfig.prefix;
+bot.on("message", (message) => {
+
+  if(!message.content.startsWith(prefix)) return;
+
+if(message.content.startsWith(prefix + "avatar ")) { //IF for the command.
+     if(message.mentions.users.first()) { //Check if the message has a mention in it.
+           let user = message.mentions.users.first(); //Since message.mentions.users returns a collection; we must use the first() method to get the first in the collection.
+           let output = user.tag /*Nickname and Discriminator*/ +
+           "\nAvatar URL: " + user.avatarURL; /*The Avatar URL*/
+           message.channel.sendMessage(output); //We send the output in the current channel.
+    } else {
+          message.reply("Invalid user."); //Reply with a mention saying "Invalid user."
+    }
+  }});
 
 bot.on('message', msg => {
   if (msg.content === '/ping') {
@@ -211,7 +228,13 @@ bot.on('message', msg => {
 
 bot.on('message', msg => {
   if (msg.content === '/help') {
-    msg.reply(`Check your Dms`)
+    msg.reply(`Check your dms`)
+  }
+});
+
+bot.on('message', msg => {
+  if (msg.content === '/avatar') {
+    msg.reply(`You need Mention someone`)
   }
 });
 
