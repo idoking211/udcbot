@@ -239,8 +239,6 @@ bot.on('message', msg => {
 
 bot.on('message', msg => {
 
-  if (!message.guild) return;
-
   if (msg.content === '/join') {
     // Only try to join the sender's voice channel if they are in one themselves
     if (msg.member.voiceChannel) {
