@@ -237,20 +237,4 @@ bot.on('message', msg => {
   }
 });
 
-bot.on('message', msg => {
-
-  if (msg.content === '/join') {
-    // Only try to join the sender's voice channel if they are in one themselves
-    if (msg.member.voiceChannel) {
-      msg.member.voiceChannel.join()
-        .then(connection => { // Connection is an instance of VoiceConnection
-          msg.reply('I have successfully connected to the channel!');
-        })
-        .catch(console.log);
-    } else {
-      msg.reply('You need to join a voice channel first!');
-    }
-  }
-});
-
 bot.login(process.env.BOT_TOKEN);
