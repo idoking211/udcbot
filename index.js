@@ -215,13 +215,19 @@ bot.on("message", (message) => {
            "\nAvatar URL: " + user.avatarURL; /*The Avatar URL*/
            message.channel.sendMessage(output); //We send the output in the current channel.
     } else {
-          message.reply("You need to Mention someone"); //Reply with a mention saying "Invalid user."}
+          message.reply("You need to Mention someone") //Reply with a mention saying "Invalid user."}
        }
      }});
 
 bot.on('message', msg => {
   if (msg.content === '/ping') {
     msg.reply(`Pong! The ping is **${(bot.ping).toFixed(0)}**ms!  :ping_pong:`)
+  }
+});
+
+bot.on('message', msg => {
+  if (msg.content === '/help') {
+    msg.reply(`Check your dms`)
   }
 });
 
