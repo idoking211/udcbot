@@ -36,7 +36,6 @@ bot.on("message", async message => {
   let args = messageArray.slice(1);
 
 
-
   if(cmd === `${prefix}kick`){
 
     //!kick @daeshan askin for it
@@ -208,16 +207,14 @@ bot.on("message", async message => {
 const prefix = botconfig.prefix;
 bot.on("message", (message) => {
 
-
 // Create an event listener for new guild members
-client.on('guildMemberAdd', member => {
+bot.on('guildMemberAdd', member => {
   // Send the message to a designated channel on a server:
   const channel = member.guild.channels.find('name', 'member-log');
   // Do nothing if the channel wasn't found on this server
   if (!channel) return;
   // Send the message, mentioning the member
   channel.send(Welcome to the server, ${member});
-
 
   if(!message.content.startsWith(prefix)) return;
 
