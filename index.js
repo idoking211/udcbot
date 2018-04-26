@@ -30,6 +30,20 @@ bot.on("message", async message => {
   if(message.author.bot) return;
   if(message.channel.type === "dm") return;
 
+//welcome join
+bot.on('guildMemberAdd', member => {
+  const channel = member.guild.channels.find('name', 'welcome');
+  if (!channel) return;
+  channel.send(`Welcome to the server, ${member}`);
+});
+
+//welcome left
+bot.on('guildMemberRemove', member => {
+  const channel = member.guild.channels.find('name', 'welcome');
+  if (!channel) return;
+  channel.send(`${member}, left the Server`);
+});
+
   let prefix = botconfig.prefix;
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
@@ -208,20 +222,6 @@ const prefix = botconfig.prefix;
 bot.on("message", (message) => {
 
   if(!message.content.startsWith(prefix)) return;
-
-//welcome join
-bot.on('guildMemberAdd', member => {
-  const channel = member.guild.channels.find('name', 'welcome');
-  if (!channel) return;
-  channel.send(`Welcome to the server, ${member}`);
-});
-
-//welcome left
-bot.on('guildMemberRemove', member => {
-  const channel = member.guild.channels.find('name', 'welcome');
-  if (!channel) return;
-  channel.send(`${member}, left the Server`);
-});
 
 if(message.content.startsWith(prefix + "avatar ")) { //IF for the command.
      if(message.mentions.users.first()) { //Check if the message has a mention in it.
