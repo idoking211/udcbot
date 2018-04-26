@@ -253,10 +253,4 @@ bot.on('message', msg => {
   }
 });
 
-default:
-            message.channel.send("Invalid command.");
-            console.log(${message.author.tag} invaild command!)
-    }
-});
-
 bot.login(process.env.BOT_TOKEN);
