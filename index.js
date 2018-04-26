@@ -35,19 +35,6 @@ bot.on("message", async message => {
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
 
-//welcome join
-bot.on('guildMemberAdd', member => {
-  const channel = member.guild.channels.find('name', 'welcome');
-  if (!channel) return;
-  message.channel.send(`Welcome to the server, ${member}`);
-});
-
-//welcome left
-bot.on('guildMemberRemove', member => {
-  const channel = member.guild.channels.find('name', 'welcome');
-  if (!channel) return;
-  message.channel.send(`${member}, left the Server`);
-});
 
 
   if(cmd === `${prefix}kick`){
@@ -220,6 +207,17 @@ bot.on('guildMemberRemove', member => {
 
 const prefix = botconfig.prefix;
 bot.on("message", (message) => {
+
+
+// Create an event listener for new guild members
+client.on('guildMemberAdd', member => {
+  // Send the message to a designated channel on a server:
+  const channel = member.guild.channels.find('name', 'member-log');
+  // Do nothing if the channel wasn't found on this server
+  if (!channel) return;
+  // Send the message, mentioning the member
+  channel.send(Welcome to the server, ${member});
+
 
   if(!message.content.startsWith(prefix)) return;
 
