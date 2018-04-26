@@ -35,6 +35,15 @@ bot.on("message", async message => {
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
 
+// Create an event listener for new guild members
+bot.on('guildMemberAdd', member => {
+  // Send the message to a designated channel on a server:
+  const channel = member.guild.channels.find('name', 'member-log');
+  // Do nothing if the channel wasn't found on this server
+  if (!channel) return;
+  // Send the message, mentioning the member
+  channel.send(Welcome to the server, ${member});
+
 
   if(cmd === `${prefix}kick`){
 
@@ -208,15 +217,6 @@ const prefix = botconfig.prefix;
 bot.on("message", (message) => {
 
   if(!message.content.startsWith(prefix)) return;
-
-// Create an event listener for new guild members
-bot.on('guildMemberAdd', member => {
-  // Send the message to a designated channel on a server:
-  const channel = member.guild.channels.find('name', 'member-log');
-  // Do nothing if the channel wasn't found on this server
-  if (!channel) return;
-  // Send the message, mentioning the member
-  channel.send(Welcome to the server, ${member});
 
 if(message.content.startsWith(prefix + "avatar ")) { //IF for the command.
      if(message.mentions.users.first()) { //Check if the message has a mention in it.
