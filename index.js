@@ -207,6 +207,8 @@ bot.on("message", async message => {
 const prefix = botconfig.prefix;
 bot.on("message", (message) => {
 
+  if(!message.content.startsWith(prefix)) return;
+
 //welcome join
 bot.on('guildMemberAdd', member => {
   const channel = member.guild.channels.find('name', 'welcome');
@@ -220,8 +222,6 @@ bot.on('guildMemberRemove', member => {
   if (!channel) return;
   channel.send(`${member}, left the Server`);
 });
-
-  if(!message.content.startsWith(prefix)) return;
 
 if(message.content.startsWith(prefix + "avatar ")) { //IF for the command.
      if(message.mentions.users.first()) { //Check if the message has a mention in it.
