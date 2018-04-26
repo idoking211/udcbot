@@ -26,10 +26,6 @@ bot.user.setActivity(
         `${bot.guilds.size} servers | /help`, {type: "WATCHING"});
 });
 
-bot.on("message", async message => {
-  if(message.author.bot) return;
-  if(message.channel.type === "dm") return;
-
 //welcome join
 bot.on('guildMemberAdd', member => {
   const channel = member.guild.channels.find('name', 'welcome');
@@ -43,6 +39,10 @@ bot.on('guildMemberRemove', member => {
   if (!channel) return;
   channel.send(`${member}, left the Server`);
 });
+
+bot.on("message", async message => {
+  if(message.author.bot) return;
+  if(message.channel.type === "dm") return;
 
 
   let prefix = botconfig.prefix;
