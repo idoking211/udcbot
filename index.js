@@ -39,14 +39,14 @@ bot.on("message", async message => {
 bot.on('guildMemberAdd', member => {
   const channel = member.guild.channels.find('name', 'welcome');
   if (!channel) return;
-  message.channel.SendMessage(`Welcome to the server, ${member}`);
+  message.channel.sendMessage(`Welcome to the server, ${member}`);
 });
 
 //welcome left
 bot.on('guildMemberRemove', member => {
   const channel = member.guild.channels.find('name', 'welcome');
   if (!channel) return;
-  message.channel.SendMessage(`${member}, left the Server`);
+  message.channel.sendMessage(`${member}, left the Server`);
 });
 
 
