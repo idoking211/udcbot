@@ -211,14 +211,14 @@ bot.on("message", (message) => {
 bot.on('guildMemberAdd', member => {
   const channel = member.guild.channels.find('name', 'welcome');
   if (!channel) return;
-  message.channel(`Welcome to the server, ${member}`);
+  channel.send(`Welcome to the server, ${member}`);
 });
 
 //welcome left
 bot.on('guildMemberRemove', member => {
   const channel = member.guild.channels.find('name', 'welcome');
   if (!channel) return;
-  message.channel(`${member}, left the Server`);
+  channel.send(`${member}, left the Server`);
 });
 
   if(!message.content.startsWith(prefix)) return;
