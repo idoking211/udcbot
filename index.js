@@ -218,6 +218,8 @@ bot.on("message", async message => {
     return message.author.send(botembed);
   }
 
+  if(cmd === `${prefix}mute`){
+
     bot.setInterval(() => {
         for(let i in bot.muted) {
             let time = bot.muted[i].time;
