@@ -219,7 +219,7 @@ bot.on("message", async message => {
   }
 
 module.exports.run = async (client, message) => {
-   const Discord = require('discord.js');
+  if(cmd === `${prefix}userinfo`){
    var embed = new Discord.RichEmbed()
   .setAuthor(message.author.tag, message.author.avatarURL)
   .setDescription("User Information")
@@ -229,7 +229,7 @@ module.exports.run = async (client, message) => {
   .addField("Create and Join Times", "**Created At:** " + message.member.user.createdAt.toUTCString() + "\n**Joined Guild At:** " + message.member.joinedAt.toUTCString())
   .setColor('#1fd619')
    message.channel.send({embed});
-
+   }
   };
   
   exports.conf = {
