@@ -218,31 +218,25 @@ bot.on("message", async message => {
     return message.author.send(botembed);
   }
 
+    bot.setInterval(() => {
+        for(let i in bot.muted) {
+            let time = bot.muted[i].time;
+            let guildId = bot.muted[i].guild;
+            let guild = bot.guilds.get(guildId);
+            let member = guild.members.get(i);
+            let mutedRole = guild.roles.find(mR => mR.name === "Muted");
+            if(!mutedRole) continue;
 
-module.exports.run = async (client, message) => {
-   const Discord = require('discord.js');
-   var embed = new Discord.RichEmbed()
-  .setAuthor(message.author.tag, message.author.avatarURL)
-  .setDescription("User Information")
-  .setThumbnail(message.author.avatarURL)
-  .addField("Names", "**Username:** " + message.author.username + "\n**Current Nickname:** " + message.member.displayName)
-  .addField("Identity", `**User ID:** ${message.author.id} `)
-  .addField("Create and Join Times", "**Created At:** " + message.member.user.createdAt.toUTCString() + "\n**Joined Guild At:** " + message.member.joinedAt.toUTCString())
-  .setColor('#1fd619')
-   message.channel.send({embed});
+            if(Date.now() > time) {
+                member.removeRole(mutedRole);
+                delete bot.muted[i];
 
-  };
-  
-  exports.conf = {
-    aliases: ['uinfo'],
-    guildOnly: false,
-  };
-  exports.help = {
-    name: 'userinfo',
-    description: 'Tells your info.',
-    usage: 'userinfo',
-    category: '- Info Commands',
-  };
+                fs.writeFile("./muted.json", JSON.stringify(bot.muted), err => {
+                    if(err) throw err;
+                });
+            }
+        }
+    }, 5000);
 });
 
 const prefix = botconfig.prefix;
