@@ -217,6 +217,31 @@ bot.on("message", async message => {
 
     return message.author.send(botembed);
   }
+
+module.exports.run = async (client, message) => {
+   const Discord = require('discord.js');
+   var embed = new Discord.RichEmbed()
+  .setAuthor(message.author.tag, message.author.avatarURL)
+  .setDescription("User Information")
+  .setThumbnail(message.author.avatarURL)
+  .addField("Names", "**Username:** " + message.author.username + "\n**Current Nickname:** " + message.member.displayName)
+  .addField("Identity", `**User ID:** ${message.author.id} `)
+  .addField("Create and Join Times", "**Created At:** " + message.member.user.createdAt.toUTCString() + "\n**Joined Guild At:** " + message.member.joinedAt.toUTCString())
+  .setColor('#1fd619')
+   message.channel.send({embed});
+
+  };
+  
+  exports.conf = {
+    aliases: ['uinfo'],
+    guildOnly: false,
+  };
+  exports.help = {
+    name: 'userinfo',
+    description: 'Tells your info.',
+    usage: 'userinfo',
+    category: '- Info Commands',
+  };
 });
 
 const prefix = botconfig.prefix;
