@@ -115,7 +115,7 @@ exports.run = (bot, message, args, Discord, config, commands, customCommands, ut
     
     message.guild.unban(unbanMember);
 
-    message.channel.send(config.memberUnbanned);
+    message.channel.send(botconfig.memberUnbanned);
 
     util.log("INFO", "User " + message.author.username + " unbanned player " + unbanMember);
     
