@@ -217,28 +217,6 @@ bot.on("message", async message => {
 
     return message.author.send(botembed);
   }
-
-  if(cmd === `${prefix}mute`){
-
-    bot.setInterval(() => {
-        for(let i in bot.muted) {
-            let time = bot.muted[i].time;
-            let guildId = bot.muted[i].guild;
-            let guild = bot.guilds.get(guildId);
-            let member = guild.members.get(i);
-            let mutedRole = guild.roles.find(mR => mR.name === "Muted");
-            if(!mutedRole) continue;
-
-            if(Date.now() > time) {
-                member.removeRole(mutedRole);
-                delete bot.muted[i];
-
-                fs.writeFile("./muted.json", JSON.stringify(bot.muted), err => {
-                    if(err) throw err;
-                });
-            }
-        }
-    }, 5000);
 });
 
 const prefix = botconfig.prefix;
