@@ -108,22 +108,6 @@ bot.on("message", async message => {
   }
 
 
-exports.run = (bot, message, args, Discord, config, commands, customCommands, util, messages) => {
-    let unbanMember = args[0];
-
-  if(cmd === `${prefix}unban`){
-
-    message.guild.unban(unbanMember);
-
-    message.channel.send(config.memberUnbanned);
-
-    util.log("INFO", "User " + message.author.username + " unbanned player " + unbanMember);
-    
-	message.react('✅');
-
-    return;
-  }
-
   if(cmd === `${prefix}report`){
 
     //!report @ned this is the reason
