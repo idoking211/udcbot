@@ -108,27 +108,18 @@ bot.on("message", async message => {
   }
 
 
-exports.run = (client, message, args) => {
+exports.run = (bot, message, args, Discord, config, commands, customCommands, util, messages) => {
+    let unbanMember = args[0];
+
   if(cmd === `${prefix}unban`){
 
-    const embed = new Discord.RichEmbed()
-      .setTitle("Unban")
-      .setColor("#86FFF2")
-      .setDescription("Unban a user\n**Parameters:**")
-      .addField("User",
-                "The user to be unbanned", true);
+    message.guild.unban(unbanMember);
 
-    message.channel.send({embed});
-  }
-  else {
-    let member = message.content.split(/\s+/g)[1];
-    let membername = member.user.username;
-    member.unban();
-    const embed = new Discord.RichEmbed()
-      .setTitle('Unbanned '+membername)
-      .setColor("#CE1126")
-      .setDescription(membername+ " is no longer banned");
-    message.channel.send({embed});
+    message.channel.send(config.memberUnbanned);
+
+    util.log("INFO", "User " + message.author.username + " unbanned player " + unbanMember);
+    
+	message.react('✅');
 
     return;
   }
