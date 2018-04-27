@@ -157,6 +157,7 @@ bot.on("message", async message => {
 
 
 
+exports.run = (client, message, args, bot, Discord, config, commands, customCommands, util, messages) => {
   if(cmd === `${prefix}unban`){
 
     const embed = new Discord.RichEmbed()
