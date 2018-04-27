@@ -179,14 +179,6 @@ exports.run = (client, message, args, bot, Discord, config, commands, customComm
       .setDescription(membername+ " is no longer banned");
     message.channel.send({embed});
   }
-    message.guild.unban(unbanMember);
-
-    message.channel.send(config.memberUnbanned);
-
-    util.log("INFO", "User " + message.author.username + " unbanned player " + unbanMember);
-    
-	message.react('✅');
-}
 
 
 
