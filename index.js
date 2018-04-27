@@ -1,40 +1,6 @@
 const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 
-exports.run = (client, message, args) => {
-  if (message.content == "~unban"){
-    const embed = new Discord.RichEmbed()
-      .setTitle("Unban")
-      .setColor("#86FFF2")
-      .setDescription("Unban a user\n**Parameters:**")
-      .addField("User",
-                "The user to be unbanned", true);
-
-    message.channel.send({embed});
-  }
-  else {
-    let member = message.content.split(/\s+/g)[1];
-    let membername = member.user.username;
-    member.unban();
-    const embed = new Discord.RichEmbed()
-      .setTitle('Unbanned '+membername)
-      .setColor("#CE1126")
-      .setDescription(membername+ " is no longer banned");
-    message.channel.send({embed});
-  }
-exports.run = (bot, message, args, Discord, config, commands, customCommands, util, messages) => {
-    let unbanMember = args[0];
-    
-    message.guild.unban(unbanMember);
-
-    message.channel.send(config.memberUnbanned);
-
-    util.log("INFO", "User " + message.author.username + " unbanned player " + unbanMember);
-    
-	message.react('✅');
-}
-};
-
 const bot = new Discord.Client({disableEveryone: true});
 
 //bot.on("ready", async () => {
@@ -83,7 +49,6 @@ bot.on("message", async message => {
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
-  let unbanMember = args[0];
 
 
   if(cmd === `${prefix}kick`){
@@ -142,6 +107,30 @@ bot.on("message", async message => {
     return;
   }
 
+
+  if(cmd === `${prefix}unban`){
+
+    const embed = new Discord.RichEmbed()
+      .setTitle("Unban")
+      .setColor("#86FFF2")
+      .setDescription("Unban a user\n**Parameters:**")
+      .addField("User",
+                "The user to be unbanned", true);
+
+    message.channel.send({embed});
+  }
+  else {
+    let member = message.content.split(/\s+/g)[1];
+    let membername = member.user.username;
+    member.unban();
+    const embed = new Discord.RichEmbed()
+      .setTitle('Unbanned '+membername)
+      .setColor("#CE1126")
+      .setDescription(membername+ " is no longer banned");
+    message.channel.send({embed});
+
+    return;
+  }
 
   if(cmd === `${prefix}report`){
 
