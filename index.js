@@ -49,6 +49,7 @@ bot.on("message", async message => {
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
+  let unbanMember = args[0];
 
 
   if(cmd === `${prefix}kick`){
@@ -103,6 +104,23 @@ bot.on("message", async message => {
     message.guild.member(bUser).ban(bReason);
     incidentchannel.send(banEmbed);
 
+
+    return;
+  }
+
+
+exports.run = (bot, message, args, Discord, config, commands, customCommands, util, messages) => {
+  if(cmd === `${prefix}unban`){
+
+    
+    message.guild.unban(unbanMember);
+
+    message.channel.send(config.memberUnbanned);
+
+    util.log("INFO", "User " + message.author.username + " unbanned player " + unbanMember);
+    
+	message.react('✅');
+}
 
     return;
   }
