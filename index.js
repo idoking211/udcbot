@@ -224,7 +224,7 @@ bot.on("message", (message) => {
 
   if(!message.content.startsWith(prefix)) return;
 
-    if (message.content == "/clear") {
+    if (message.content == '/clear') {
 
       // Check the following permissions before deleting messages:
       //    1. Check if the user has enough permissions
