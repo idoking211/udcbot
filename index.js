@@ -1,8 +1,6 @@
 const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 
-const CLEAR_MESSAGES = '/clear';
-
 const bot = new Discord.Client({disableEveryone: true});
 
 //bot.on("ready", async () => {
@@ -226,7 +224,7 @@ bot.on("message", (message) => {
 
   if(!message.content.startsWith(prefix)) return;
 
-    if (message.content == CLEAR_MESSAGES) {
+    if (message.content == "/clear") {
 
       // Check the following permissions before deleting messages:
       //    1. Check if the user has enough permissions
