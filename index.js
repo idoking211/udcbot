@@ -256,9 +256,6 @@ bot.on("message", (message) => {
             console.log('Error while doing Bulk Delete');
             console.log(err);
           });
-      }
-    }
-  });
 
 if(message.content.startsWith(prefix + "avatar ")) { //IF for the command.
      if(message.mentions.users.first()) { //Check if the message has a mention in it.
