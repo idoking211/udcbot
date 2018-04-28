@@ -1,6 +1,8 @@
 const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 
+const CLEAR_MESSAGES = '!clearMessages';
+
 const bot = new Discord.Client({disableEveryone: true});
 
 //bot.on("ready", async () => {
