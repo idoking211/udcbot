@@ -311,6 +311,18 @@ bot.on("message", (message) => {
 
   if(!message.content.startsWith(prefix)) return;
 
+  if (message.content === (prefix + "kick")) {
+    message.channel.send({embed: {
+      color: 3447003,
+      title: "\n \n__Kick",
+      description: "** **\n/kick (@user) (reason)\n** **\n**Example:**\n** **\n/kick @user break the rules\n** **\nits will kick the user for brekaing the rules",
+      footer: 
+      {
+          icon_url: client.user.avatarURL,
+          text: "Banana"
+      }
+    }});
+    } else
 if(message.content.startsWith(prefix + "avatar ")) { //IF for the command.
      if(message.mentions.users.first()) { //Check if the message has a mention in it.
            let user = message.mentions.users.first(); //Since message.mentions.users returns a collection; we must use the first() method to get the first in the collection.
