@@ -269,6 +269,13 @@ bot.on("message", (message) => {
 
   if(!message.content.startsWith(prefix)) return;
 
+// Restrict a command to a specific user by ID
+if (message.content.startsWith(prefix + 'test')) {
+    if (message.author.id !== '311604263379795970') return;
+    // Your Command Here
+    message.reply("i am Online, for Start typr `/help`");
+}
+
 if(message.content.startsWith(prefix + "avatar ")) { //IF for the command.
      if(message.mentions.users.first()) { //Check if the message has a mention in it.
            let user = message.mentions.users.first(); //Since message.mentions.users returns a collection; we must use the first() method to get the first in the collection.
