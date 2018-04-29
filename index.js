@@ -252,7 +252,7 @@ bot.on("message", async message => {
 
 
 
-  if(cmd === "${prefix}clear") {
+  if(cmd === `${prefix}clear`) {
     // This command removes all messages from all users in the channel, up to 100.
     
     // get the delete count, as an actual number.
