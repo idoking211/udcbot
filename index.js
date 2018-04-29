@@ -405,6 +405,13 @@ bot.on('message', msg => {
   }
 });
 
+bot.on("message", message => {
+  const prefixMention = new RegExp(`^<@!?${client.user.id}> `);
+  prefix = prefixMention.match(message.content) ? message.content.match(prefixMention)[0] + " " : prefix;
+
+  // Go ahead with the rest of your code!
+}
+
 bot.on('message', message => {
     if(message.author.bot) return;
     var re =  /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi.exec(message.cleanContent);
