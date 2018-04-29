@@ -308,34 +308,6 @@ if( swearWords.some(word => message.content.includes(word)) ) {
 
 
 
-  if (cmd === `${prefix}clear`){
- 		message.delete()
- 		message.channel.send("Cleard" + args.join(" "));
-}
-
-
-
-
-
-  //if(cmd === `${prefix}clear`) {
-    // This command removes all messages from all users in the channel, up to 100.
-    
-    // get the delete count, as an actual number.
-    //const deleteCount = parseInt(args[0], 10);
-    
-    // Ooooh nice, combined conditions. <3
-    //if(!deleteCount || deleteCount < 2 || deleteCount > 100)
-      //return message.reply("Please provide a number between 2 and 100 for the number of messages to delete");
-    
-    // So we get our messages, and delete them. Simple enough, right?
-    //const fetched = await message.channel.fetchMessages({count: deleteCount});
-    //message.channel.bulkDelete(fetched)
-      //.catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
-  //}
-
-
-
-
   if(cmd === `${prefix}help`){
 
     let bicon = bot.user.displayAvatarURL;
@@ -367,20 +339,6 @@ bot.on("message", (message) => {
 
   if(!message.content.startsWith(prefix)) return;
 
-exports.run = (client, message, args) => {
-if(message.author.id !== botconfig.ownerID) return;
-if(message.content.startsWith(prefix + "prefix")) {
-    // Gets the prefix from the command (eg. "!prefix +" it will take the "+" from it)
-    let newPrefix = message.content.split(" ").slice(1, 2)[0];
-    // change the configuration in memory
-    botconfig.prefix = newPrefix;
-    message.channel.send(`Prefix has been updated to ${newPrefix}`).catch(console.error);
-  
-    // Now we have to save the file.
-    fs.writeFile("./botconfig.json", JSON.stringify(botconfig), (err) => console.error);
-  }
-}
-
 if(message.content.startsWith(prefix + "avatar ")) { //IF for the command.
      if(message.mentions.users.first()) { //Check if the message has a mention in it.
            let user = message.mentions.users.first(); //Since message.mentions.users returns a collection; we must use the first() method to get the first in the collection.
@@ -409,13 +367,6 @@ bot.on('message', msg => {
     msg.reply(`You need Mention someone`)
   }
 });
-
-bot.on("message", message => {
-  const prefixMention = new RegExp(`^<@!?${client.user.id}> `);
-  prefix = prefixMention.match(message.content) ? message.content.match(prefixMention)[0] + " " : prefix;
-
-  // Go ahead with the rest of your code!
-}
 
 bot.on('message', message => {
     if(message.author.bot) return;
