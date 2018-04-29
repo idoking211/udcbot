@@ -234,9 +234,9 @@ bot.on("message", async message => {
 
   message.channel.send({embed})
   	message.delete()  
-  message.react(':thumbsup:')
-  .then(() => message.react(':thumbsdown:'))
-  .then(() => message.react(':shrug:'))
+  message.react('👍')
+  .then(() => message.react('👎'))
+  .then(() => message.react('🤷‍♂️'))
   .catch(() => console.error('Emoji failed to react.'));
 
 }
