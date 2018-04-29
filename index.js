@@ -214,6 +214,28 @@ bot.on("message", async message => {
 
 
 
+  if (cmd === `${prefix}embedsay`){
+ 		message.delete()
+         const embed = new Discord.RichEmbed()
+ 		.setColor(0x4d433e)
+ 		.setDescription(args.join(" "));
+ 		message.channel.send({embed})
+}
+
+
+
+
+  if (cmd === `${prefix}embed`){
+ 		message.delete()
+         const embed = new Discord.RichEmbed()
+ 		.setColor(0x4d433e)
+ 		.setDescription(args.join(" "));
+ 		message.channel.send({embed})
+}
+
+
+
+
   if (cmd === `${prefix}say`){
  		message.delete()
  		message.channel.send(args.join(" "));
