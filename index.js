@@ -233,9 +233,9 @@ bot.on("message", async message => {
   .setFooter(`Poll Started By: ${message.author.username}`, `${message.author.avatarURL}`)
 
   message.channel.send({embed})
-  message.react('👍')
-  .then(() => message.react('👎'))
-  .then(() => message.react('🤷'))
+  message.author.react('👍')
+  .then(() => message.author.react('👎'))
+  .then(() => message.author.react('🤷'))
   .catch(() => console.error('Emoji failed to react.'));
 
 }
