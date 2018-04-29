@@ -231,14 +231,14 @@ bot.on("message", async message => {
   .setColor("#5599ff")
   .setDescription(`${question}`)
   .setFooter(`Poll Started By: ${message.author.username}`, `${message.author.avatarURL}`)
-  message.react('👍')
-  .then(() => message.react('👎'))
-  .then(() => message.react('🤷‍♂️'))
-  .catch(() => console.error('Emoji failed to react.'));
 
   message.channel.send({embed})
   	message.delete()  
 
+  message.react('👍')
+  .then(() => message.react('👎'))
+  .then(() => message.react('🤷‍♂️'))
+  .catch(() => console.error('Emoji failed to react.'));
 }
 
 
