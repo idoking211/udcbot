@@ -187,7 +187,7 @@ bot.on("message", async message => {
         var mutereason = message.content.substring(mutereasondelete).split(" "); // deletes the first letters until it reaches the reason
         var mutereason = mutereason.join(" "); // joins the list kickreason into one line
         if (!mutereason) return message.reply("Please indicate a reason for the mute!") // if no reason
-        mutedmember.addRole(Muted) //if reason, kick
+        mutedmember.addRole(muted) //if reason, kick
             .catch(error => message.reply(`Sorry ${message.author} I couldn't mute because of : ${error}`)); //if error, display error
         message.reply(`${mutedmember.user} has been muted by ${message.author} because: ${mutereason}`); // sends a message saying he was kicked
     }
@@ -196,7 +196,7 @@ bot.on("message", async message => {
         if (!message.member.roles.some(r=>["Moderation"].includes(r.name)) ) return message.reply("Sorry, you do not have the permission to do this!"); // if author has no perms
         var unmutedmember = message.mentions.members.first(); // sets the mentioned user to the var kickedmember
         if (!unmutedmember) return message.reply("Please mention a valid member of this server!") // if there is no kickedmmeber var
-        unmutedmember.removeRole(Muted) //if reason, kick
+        unmutedmember.removeRole(muted) //if reason, kick
             .catch(error => message.reply(`Sorry ${message.author} I couldn't mute because of : ${error}`)); //if error, display error
         message.reply(`${unmutedmember.user} has been unmuted by ${message.author}!`); // sends a message saying he was kicked
     }
