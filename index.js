@@ -3,6 +3,8 @@ const Discord = require("discord.js");
 
 const bot = new Discord.Client({disableEveryone: true});
 
+const swearWords = ["darn", "shucks", "frak", "shite"];
+
 //bot.on("ready", async () => {
   //console.log(`${bot.user.username} is online!`);
 
@@ -78,6 +80,14 @@ bot.on("message", async message => {
 
     return;
   }
+
+
+
+if( swearWords.some(word => message.content.includes(word)) ) {
+     message.delete();
+  message.reply("Oh no you said a bad word!!!");
+  // Or just do message.delete();
+}
 
 
   if(cmd === `${prefix}ban`){
