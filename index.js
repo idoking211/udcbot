@@ -270,7 +270,7 @@ bot.on("message", (message) => {
   if(!message.content.startsWith(prefix)) return;
 
 // Restrict a command to a specific user by ID
-if (message.content.startsWith(prefix + 'test')) {
+  if (msg.content === '/ping') {
     if (message.author.id !== '311604263379795970') return;
     // Your Command Here
     message.reply("i am Online, for Start typr `/help`");
