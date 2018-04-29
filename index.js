@@ -177,9 +177,9 @@ bot.on("message", async message => {
     .setDescription("**Kick Format**")
     .setColor("#eb8f1b")
     .setThumbnail(sicon)
-    .addField("/kick (@user) (reason)");
-    .addField("Example: /kick @user <@!438340566938419210> Break the Rules");
-    .addField("Its will kick <@!438340566938419210> for Brekaing the Rules");
+    .addField("/kick (@user) (reason)")
+    .addField("Example: /kick @user <@!438340566938419210> Break the Rules")
+    .addField("Its will kick <@!438340566938419210> for Break the Rules");
 
     return message.channel.send(serverembed);
   }
