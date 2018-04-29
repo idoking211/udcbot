@@ -220,14 +220,25 @@ bot.on("message", async message => {
 
 
 
-exports.run = async (bot, message, args) => {
-  if (!args) return message.reply("You must have something to vote for!")
-  if (!message.content.includes("?")) return message.reply("Include a ? in your vote!")
-    message.channel.send(`:ballot_box:  ${message.author.username} started a vote! React to my next message to vote on it. :ballot_box: `);
-    const pollTopic = await message.channel.send(`${args}`);
-    pollTopic.react(`✅`);
-    pollTopic.react(`⛔`);
-};
+  let question = args.slice(0).join(" ");
+
+  if (args.length === 0)
+  return message.reply('**Invalid Format:** `!Poll <Question>`')
+
+  const embed = new Discord.RichEmbed()
+  .setTitle("A Poll Has Been Started!")
+  .setColor("#5599ff")
+  .setDescription(`${question}`)
+  .setFooter(`Poll Started By: ${message.author.username}`, `${message.author.avatarURL}`)
+
+  message.channel.send({embed})
+  message.react('👍')
+  .then(() => message.react('👎'))
+  .then(() => message.react('🤷'))
+  .catch(() => console.error('Emoji failed to react.'));
+
+}
+
 
 
 
