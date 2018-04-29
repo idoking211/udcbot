@@ -236,7 +236,7 @@ bot.on("message", async message => {
   	//message.delete()  
 
   message.react('👍')
-  message.react('👎'));
+  .then(() => message.react('👎'));
 }
 
 
