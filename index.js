@@ -207,7 +207,7 @@ bot.on("message", async message => {
  		.setDescription(args.join(" "));
  		message.channel.send({embed})
 }
-exports.run = (client, message) => {
+  if (cmd === `${prefix}mute `){
     if (!message.guild.member(message.author).hasPermission('MUTE_MEMBERS')) {
         message.channel.send(':lock: **I** need `MANAGE_ROLES` Permissions to execute `mute`');
         return;
