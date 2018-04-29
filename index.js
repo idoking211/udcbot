@@ -287,7 +287,7 @@ if(message.content.startsWith(prefix + "prefix")) {
     message.channel.send(`Prefix has been updated to ${newPrefix}`).catch(console.error);
   
     // Now we have to save the file.
-    fs.writeFile("./config.json", JSON.stringify(config), (err) => console.error);
+    fs.writeFile("./botconfig.json", JSON.stringify(botconfig), (err) => console.error);
   }
 }
 
