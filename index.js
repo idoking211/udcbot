@@ -233,7 +233,7 @@ bot.on("message", async message => {
   .setFooter(`Poll Started By: ${message.author.username}`, `${message.author.avatarURL}`)
 
   message.channel.send({embed})
-  	message.delete()  
+  	//message.delete()  
 
   message.react('👍')
   message.react('👎'));
