@@ -178,7 +178,7 @@ bot.on("message", async message => {
 
 
 
-    if (cmd == "mute") { // creates the command mute
+    if (cmd === `${prefix}mute`) { // creates the command mute
         if (!message.member.roles.some(r=>["Moderator"].includes(r.name)) ) return message.reply("Sorry, you do not have the permission to do this!"); // if author has no perms
         var mutedmember = message.mentions.members.first(); // sets the mentioned user to the var kickedmember
         if (!mutedmember) return message.reply("Please mention a valid member of this server!") // if there is no kickedmmeber var
@@ -192,7 +192,7 @@ bot.on("message", async message => {
         message.reply(`${mutedmember.user} has been muted by ${message.author} because: ${mutereason}`); // sends a message saying he was kicked
     }
 
-    if (cmd == "unmute") { // creates the command unmute
+    if (cmd === `${prefix}mute`) { // creates the command unmute
         if (!message.member.roles.some(r=>["Moderation"].includes(r.name)) ) return message.reply("Sorry, you do not have the permission to do this!"); // if author has no perms
         var unmutedmember = message.mentions.members.first(); // sets the mentioned user to the var kickedmember
         if (!unmutedmember) return message.reply("Please mention a valid member of this server!") // if there is no kickedmmeber var
