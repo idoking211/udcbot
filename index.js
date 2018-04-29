@@ -227,7 +227,7 @@ exports.run = async (bot, message, args) => {
     const pollTopic = await message.channel.send(`${args}`);
     pollTopic.react(`✅`);
     pollTopic.react(`⛔`);
-}
+};
 
 
 
