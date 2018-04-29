@@ -219,8 +219,9 @@ bot.on("message", async message => {
 
 
 
+exports.run = (client, message, args, level) => {
+
   if (cmd === `${prefix}poll`){
- 		message.delete()
   let question = args.slice(0).join(" ");
 
   if (args.length === 0)
