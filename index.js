@@ -343,15 +343,20 @@ if( swearWords.some(word => message.content.includes(word)) ) {
     .setDescription("Help Commands")
     .setColor("#268ccf")
     .setThumbnail(bicon)
-    .addField("/kick (user) (reason)", "kick a User.")
-    .addField("/ban (user) (reason)", "ban a User.")
+    .addField("/kick (user) (reason)", "Kick a User.")
+    .addField("/ban (user) (reason)", "Ban a User.")
     .addField("/report (user) (reason)", "report about User.")
+    .addField("/mute (user) (reason)", "Mute a User")
+    .addField("/purge (number)", "Clear the chat")
     .addField("/serverinfo", "Server Informations.")
     .addField("/botinfo", "Bot Informations.")
     .addField("/membercount", "Member Count.")
+    .addField("/poll (question)", "Vote about Question")
     .addField("/say (message)", "say your message.")
+    .addField("/esay (message)", "say your embed message.")
     .addField("/avatar @user", "Avatar of the user.")
-    .addField("/ping", "Ping Pong, your Wifi");
+    .addField("/ping", "Ping Pong")
+    .addField("/help", "Show this Menu");
 
     return message.author.send(botembed);
   }
