@@ -138,7 +138,7 @@ bot.on("message", async message => {
 
 
 
-    if(command === "${prefix}purge") {
+    if(cmd === "${prefix}purge") {
         let messagecount = parseInt(args[1]) || 1;
 
         var deletedMessages = -1;
