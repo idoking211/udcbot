@@ -322,7 +322,7 @@ bot.on("message", (message) => {
           text: "Banana"
       }
     }});
-    } else
+  } else
 if(message.content.startsWith(prefix + "avatar ")) { //IF for the command.
      if(message.mentions.users.first()) { //Check if the message has a mention in it.
            let user = message.mentions.users.first(); //Since message.mentions.users returns a collection; we must use the first() method to get the first in the collection.
