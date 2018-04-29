@@ -219,7 +219,6 @@ bot.on("message", async message => {
 
 
 
-exports.run = (bot, message, args, level) => {
 
   if (cmd === `${prefix}poll`){
   let question = args.slice(0).join(" ");
