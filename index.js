@@ -300,6 +300,13 @@ bot.on('message', msg => {
 });
 
 bot.on('message', msg => {
+  if (msg.content === 'test') {
+    if (message.author.id !== '311604263379795970') return;
+    message.reply("i am Online, for Start typr `/help`");
+  }
+});
+
+bot.on('message', msg => {
   if (msg.content === '/avatar') {
     msg.reply(`You need Mention someone`)
   }
