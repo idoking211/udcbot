@@ -236,9 +236,7 @@ bot.on("message", async message => {
   	message.delete()  
 
   message.react('👍')
-  .then(() => message.react('👎'))
-  .then(() => message.react('🤷‍♂️'))
-  .catch(() => console.error('Emoji failed to react.'));
+  message.react('👎'));
 }
 
 
