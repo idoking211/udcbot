@@ -253,11 +253,6 @@ bot.on("message", (message) => {
 
   if(!message.content.startsWith(prefix)) return;
 
- if (msg.content === 'test') {
-    if(!message.member.hasPermission("ADMINISTRATOR")) return message.reply("Do not have Permissions!");
-   message.reply("i am Online, for Start typr `/help`");
- }
-
 if(message.content.startsWith(prefix + "avatar ")) { //IF for the command.
      if(message.mentions.users.first()) { //Check if the message has a mention in it.
            let user = message.mentions.users.first(); //Since message.mentions.users returns a collection; we must use the first() method to get the first in the collection.
