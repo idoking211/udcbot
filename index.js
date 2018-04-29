@@ -56,7 +56,7 @@ bot.on("message", async message => {
     //!kick @daeshan askin for it
 
     let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!kUser) return message.channel.send("Can't find user!");
+    if(!kUser) return message.channel.send("/kick (@user) (time) (reason)\n** **\n**Example:**\n** **\n/kick @user break the rules\n** **\nits will kick the user for brekaing the rules");
     let kReason = args.join(" ").slice(22);
     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("No can do pal!");
     if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be kicked!");
