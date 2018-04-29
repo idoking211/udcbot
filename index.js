@@ -56,6 +56,7 @@ bot.on("message", async message => {
     //!kick @daeshan askin for it
 
     let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(!kUser) return message.channel.send("/kick (@user) (reason)\n** **\n**Example:**\n** **\n/kick @user break the rules\n** **\nits will kick the user for brekaing the rules");
     let kReason = args.join(" ").slice(22);
     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("No can do pal!");
     if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be kicked!");
@@ -163,23 +164,6 @@ bot.on("message", async message => {
     .setColor("#eb8f1b")
     .setThumbnail(sicon)
     .addField("Members", message.guild.memberCount);
-
-    return message.channel.send(serverembed);
-  }
-
-
-
-
-  if(cmd === `${prefix}kick`){
-
-    let sicon = message.guild.iconURL;
-    let serverembed = new Discord.RichEmbed()
-    .setDescription("**Kick Format**")
-    .setColor("#eb8f1b")
-    .setThumbnail(sicon)
-    .addField("/kick @user reason")
-    .addField("Example: /kick @user <@!438340566938419210> Break the Rules")
-    .addField("Its will kick <@!438340566938419210> for Break the Rules");
 
     return message.channel.send(serverembed);
   }
