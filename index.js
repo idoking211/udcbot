@@ -257,7 +257,7 @@ bot.on("message", async message => {
  		message.delete()
  		message.delete()
  		message.delete()
- 		message.delete();
+ 		message.delete()
 }
 
 
