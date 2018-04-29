@@ -1,5 +1,18 @@
 const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
+const ms = require('ms');
+const sql = require('mysql');
+
+const knexDB = require('knex')({
+    client: 'mysql',
+    connection: {
+        host: 'localhost',
+        user: 'admin',
+        password: '1234561asd',
+        database: 'arsbot'
+    },
+    pool: {min: 0, max: 6}
+});
 
 const bot = new Discord.Client({disableEveryone: true});
 
