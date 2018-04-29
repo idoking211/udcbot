@@ -375,7 +375,7 @@ bot.on('message', message => {
     var re =  /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi.exec(message.cleanContent);
     if(re != null){
         message.delete().then(message => {
-            message.reply('Try to post Link');
+            message.reply('Invite is not allowed here!');
         });
     }
 });
