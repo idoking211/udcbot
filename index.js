@@ -277,6 +277,20 @@ bot.on("message", (message) => {
 
   if(!message.content.startsWith(prefix)) return;
 
+exports.run = (client, message, args) => {
+if(message.author.id !== botconfig.ownerID) return;
+if(message.content.startsWith(prefix + "prefix")) {
+    // Gets the prefix from the command (eg. "!prefix +" it will take the "+" from it)
+    let newPrefix = message.content.split(" ").slice(1, 2)[0];
+    // change the configuration in memory
+    botconfig.prefix = newPrefix;
+    message.channel.send(`Prefix has been updated to ${newPrefix}`).catch(console.error);
+  
+    // Now we have to save the file.
+    fs.writeFile("./config.json", JSON.stringify(config), (err) => console.error);
+  }
+}
+
 if(message.content.startsWith(prefix + "avatar ")) { //IF for the command.
      if(message.mentions.users.first()) { //Check if the message has a mention in it.
            let user = message.mentions.users.first(); //Since message.mentions.users returns a collection; we must use the first() method to get the first in the collection.
