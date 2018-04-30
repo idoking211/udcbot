@@ -206,7 +206,7 @@ await message.delete();
     }
 
     if (cmd === `${prefix}unmute`) { // creates the command unmute
-        if (!message.member.roles.some(r=>["Moderation"].includes(r.name)) ) return message.reply("Sorry, you do not have the permission to do this!"); // if author has no perms
+        if (!message.member.roles.some(r=>["Moderator"].includes(r.name)) ) return message.reply("Sorry, you do not have the permission to do this!"); // if author has no perms
         var unmutedmember = message.mentions.members.first(); // sets the mentioned user to the var kickedmember
         if (!unmutedmember) return message.reply("Please mention a valid member of this server!") // if there is no kickedmmeber var
         unmutedmember.removeRole(muted) //if reason, kick
