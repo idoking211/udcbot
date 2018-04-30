@@ -351,6 +351,11 @@ await message.delete();
       }
     }
 
+    if(toMute.roles.has(role.id)) return message.reply('This User Airedy Muted');
+
+    await(toMute.addRole(role));
+    message.channel.send(`${member} Muted`);
+
     let muteEmbed = new Discord.RichEmbed()
     .setDescription("Mute")
     .setColor("#ffdc00")
@@ -366,11 +371,6 @@ await message.delete();
 
     message.delete().catch(O_o=>{});
     reportschannel.send(reportEmbed);
-
-    if(toMute.roles.has(role.id)) return message.reply('This User Airedy Muted');
-
-    await(toMute.addRole(role));
-    message.channel.send(`${member} Muted`);
 
     return;
   }
