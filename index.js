@@ -3,10 +3,6 @@ const Discord = require("discord.js");
 
 const bot = new Discord.Client({disableEveryone: true});
 
-var mutedrole = [
-    "muted",
-]
-
 const swearWords = ["darn", "shucks", "frak", "shite", "arse", "ass", "asshole", "bastard", "bitch", "bollocks", "child-fucker", "Christ on a bike", "Christ on a cracker", "crap", "cunt", "damn", "frigger", "fuck", "goddamn", "godsdamn", "hell", "holy shit", "Jesus", "Jesus Christ", "Jesus H. Christ", "Jesus Harold Christ", "Jesus wept", "Jesus", "Mary and Joseph", "Judas Priest", "motherfucker", "nigga", "nigger", "shit", "shit ass", "shitass", "son of a bitch", "son of a motherless goat", "son of a whore", "sweet Jesus", "twat", "Can i suck your boobs", "Carpet muncher", "Choking your chicken", "Cock eyed Cunt.", "Cock muncher", "Cocklump", "Colder than a witches titty in a brass bra", "Creampie", "Cretinous cunting fuckhead", "Cum", "Cum Dumpster", "Cum on your face", "Cuntface", "can i fuck you from behind", "chimney sweeper", "chutney ferret", "cockeye", "coral stomper", "crotte", "cum dumpster", "cuntlapper", "cus", "Ai sat (directed at a man)", "Ain't", "Arrogant, Gum-chewing fat cunt", "As much use as a chocolate teapot", "a-hole", "arse bandit", "arvind kejriwal", "ask me bollix"];
 
 const mentions = ["@everyone", "@here"];
@@ -195,20 +191,6 @@ await message.delete();
 
 
 
-    if (cmd === `${prefix}mute`) { // creates the command mute
-        if (!message.member.roles.some(r=>["Moderator"].includes(r.name)) ) return message.reply("Sorry, you do not have the permission to do this!"); // if author has no perms
-        var mutedmember = message.mentions.members.first(); // sets the mentioned user to the var kickedmember
-        if (!mutedmember) return message.reply("Please mention a valid member of this server!") // if there is no kickedmmeber var
-        if (mutedmember.hasPermission("ADMINISTRATOR")) return message.reply("I cannot mute this member!") // if memebr is an admin
-        var mutereasondelete = 10 + mutedmember.user.id.length //sets the length of the kickreasondelete
-        var mutereason = message.content.substring(mutereasondelete).split(" "); // deletes the first letters until it reaches the reason
-        var mutereason = mutereason.join(" "); // joins the list kickreason into one line
-        if (!mutereason) return message.reply("Please indicate a reason for the mute!") // if no reason
-        mutedmember.addRole(mutedrole) //if reason, kick
-            .catch(error => message.reply(`Sorry ${message.author} I couldn't mute because of : ${error}`)); //if error, display error
-        message.reply(`${mutedmember.user} has been muted by ${message.author} because: ${mutereason}`); // sends a message saying he was kicked
-    }
-
     if (cmd === `${prefix}unmute`) { // creates the command unmute
         if (!message.member.roles.some(r=>["Moderator"].includes(r.name)) ) return message.reply("Sorry, you do not have the permission to do this!"); // if author has no perms
         var unmutedmember = message.mentions.members.first(); // sets the mentioned user to the var kickedmember
@@ -339,6 +321,44 @@ await message.delete();
 
     return message.author.send(botembed);
   }
+
+
+
+
+  if(cmd === `${prefix}mute`){
+
+    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You Dont have permissions for do that");
+
+    let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
+    if(!toMute) return message.channel.send("Mention a User");
+    let role = message.guild.roles.find(r => r.name === "muted");
+    if(!role){
+      try {
+        role = await message.guild.createRole({
+          name: "muted",
+          color:"#000000",
+          permissions:[]
+        });
+
+        message.guild.channels.forEach(async (channel, id) => {
+          await channel.overwritePermissions(role, {
+            SEND_MESSAGES: false,
+            ADD_REACTIONS: false
+          });
+        });
+      } catch (e) {
+        console.log(e.stack)
+      }
+    }
+
+    if(toMute.roles.has(role.id)) return message.channel.send('This User Airedy Muted');
+
+    await(toMute.addRole(role));
+    message.channel.send("You are Muted");
+
+    return;
+  }
+
 });
 
 const prefix = botconfig.prefix;
