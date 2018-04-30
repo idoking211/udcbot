@@ -327,15 +327,15 @@ await message.delete();
 
   if(cmd === `${prefix}mute`){
 
-    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You Dont have permissions for do that");
+    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You dont have permissions for that!");
 
     let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
-    if(!toMute) return message.channel.send("Mention a User");
-    let role = message.guild.roles.find(r => r.name === "muted");
+    if(!toMute) return message.reply("Need Mention a User");
+    let role = message.guild.roles.find(r => r.name === "Muted");
     if(!role){
       try {
         role = await message.guild.createRole({
-          name: "muted",
+          name: "Muted",
           color:"#000000",
           permissions:[]
         });
