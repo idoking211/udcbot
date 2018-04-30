@@ -351,10 +351,10 @@ await message.delete();
       }
     }
 
-    if(toMute.roles.has(role.id)) return message.channel.send('This User Airedy Muted');
+    if(toMute.roles.has(role.id)) return message.reply('This User Airedy Muted');
 
     await(toMute.addRole(role));
-    message.channel.send("You are Muted");
+    message.reply("You are Muted");
 
     return;
   }
