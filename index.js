@@ -354,7 +354,7 @@ await message.delete();
     if(toMute.roles.has(role.id)) return message.reply('This User Airedy Muted');
 
     await(toMute.addRole(role));
-    message.channel.send("${member}, You are Muted");
+    message.channel.send(`${member}, You are Muted`);
 
     return;
   }
