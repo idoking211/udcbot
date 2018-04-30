@@ -354,23 +354,7 @@ await message.delete();
     if(toMute.roles.has(role.id)) return message.reply('This User Airedy Muted');
 
     await(toMute.addRole(role));
-    message.channel.send(`${member} Muted`);
-
-    let muteEmbed = new Discord.RichEmbed()
-    .setDescription("Mute")
-    .setColor("#ffdc00")
-    .addField("Muted", `${rUser}`)
-    .addField("Moderator", `${message.author}`)
-    .addField("Channel", message.channel)
-    .addField("Time", message.createdAt)
-    .addField("Reason", rreason);
-
-    let reportschannel = message.guild.channels.find(`name`, "mod-log");
-    if(!reportschannel) return message.channel.send("Couldn't find mod-log channel.");
-
-
-    message.delete().catch(O_o=>{});
-    reportschannel.send(reportEmbed);
+    message.channel.send("Thats User is now Muted");
 
     return;
   }
