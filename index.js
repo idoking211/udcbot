@@ -220,6 +220,14 @@ bot.on("message", async message => {
 
 
 
+  if (cmd === `${prefix}asay`){
+ 		message.delete()
+ 		message.channel.send("@everyone" + args.join(" "));
+}
+
+
+
+
   if (cmd === `${prefix}embedsay`){
  		message.delete()
          const embed = new Discord.RichEmbed()
