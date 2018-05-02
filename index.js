@@ -222,7 +222,8 @@ bot.on("message", async message => {
 
   if (cmd === `${prefix}asay`){
  		message.delete()
- 		message.channel.send("@everyone" + args.join(" "));
+ 		message.channel.send('@everyone');
+ 		message.channel.send(args.join(" "));
 }
 
 
