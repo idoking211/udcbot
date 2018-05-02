@@ -258,7 +258,7 @@ await message.delete();
   if (cmd === `${prefix}embed`){
  		message.delete()
          const embed = new Discord.RichEmbed()
- 		.setColor(0x4d433e)
+ 		.setColor(0xaa1b1b)
  		.setDescription(args.join(" "));
  		message.channel.send({embed})
 }
