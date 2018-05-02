@@ -149,24 +149,7 @@ await message.delete();
   }
 
 
-
-
-    if(cmd === `${prefix}purge`) {
-exports.run = (client, message, args) => {
-		let messagecount = parseInt(args[0]);
-    message.channel.fetchMessages({
-        	limit: 100
-    })
-    .then(messages => {
-      let msg_array = messages.array();
-      msg_array = msg_array.filter(m => m.author.id === client.user.id);
-      msg_array.length = messagecount + 1;
-      msg_array.map(m => m.delete().catch(console.error));
-    });
-		message.channel.send('Messages Cleaned!');
-  }
-
-
+ 
 
   if(cmd === `${prefix}serverinfo`){
 
@@ -186,14 +169,14 @@ exports.run = (client, message, args) => {
 
 
 
-    if (cmd === `${prefix}unmute`) { // creates the command unmute
-        if (!message.member.roles.some(r=>["Moderator"].includes(r.name)) ) return message.reply("Sorry, you do not have the permission to do this!"); // if author has no perms
-        var unmutedmember = message.mentions.members.first(); // sets the mentioned user to the var kickedmember
-        if (!unmutedmember) return message.reply("Please mention a valid member of this server!") // if there is no kickedmmeber var
-        unmutedmember.removeRole(mutedrole) //if reason, kick
-            .catch(error => message.reply(`Sorry ${message.author} I couldn't mute because of : ${error}`)); //if error, display error
-        message.reply(`${unmutedmember.user} has been unmuted by ${message.author}!`); // sends a message saying he was kicked
-    }
+  if (cmd === `${prefix}unmute`) { // creates the command unmute
+      if (!message.member.roles.some(r=>["Moderator"].includes(r.name)) ) return message.reply("Sorry, you do not have the permission to do this!"); // if author has no perms
+      var unmutedmember = message.mentions.members.first(); // sets the mentioned user to the var kickedmember
+      if (!unmutedmember) return message.reply("Please mention a valid member of this server!") // if there is no kickedmmeber var
+      unmutedmember.removeRole(mutedrole) //if reason, kick
+          .catch(error => message.reply(`Sorry ${message.author} I couldn't mute because of : ${error}`)); //if error, display error
+      message.reply(`${unmutedmember.user} has been unmuted by ${message.author}!`); // sends a message saying he was kicked
+  }
 
 
 
