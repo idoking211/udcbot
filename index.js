@@ -268,7 +268,7 @@ bot.on("message", async message => {
   if (cmd === `${prefix}graysay`){
  		message.delete()
          const embed = new Discord.RichEmbed()
- 		.setColor(0xFF0000)
+ 		.setColor(0x808080)
  		.setDescription(args.join(" "));
  		message.channel.send({embed})
 }
