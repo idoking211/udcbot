@@ -264,7 +264,6 @@ bot.on("message", async message => {
     .setDescription(`${question}`)
     .setFooter(`Poll Started By: ${message.author.username}`, `${message.author.avatarURL}`)
   message.channel.send({embed})
-  const pollTopic = await message.channel.send(message.content.slice(2));
   await pollTopic.react(`✅`);
   await pollTopic.react(`❌`);
   const filter = (reaction) => reaction.emoji.name === '✅';
