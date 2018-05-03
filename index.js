@@ -252,7 +252,7 @@ bot.on("message", async message => {
 
 
   if (cmd === `${prefix}vote`){
- 		//message.delete()
+ 		message.delete()
   let question = args.slice(0).join(" ");
 
   if (args.length === 0)
