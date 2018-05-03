@@ -209,48 +209,6 @@ bot.on("message", async message => {
 
 
 
-  if (cmd === `${prefix}esay`){
- 		message.delete()
-         const embed = new Discord.RichEmbed()
- 		.setColor(0x4d433e)
- 		.setDescription(args.join(" "));
- 		message.channel.send({embed})
-}
-
-
-
-
-  if (cmd === `${prefix}asay`){
- 		message.delete()
- 		message.channel.send('@everyone');
- 		message.channel.send(args.join(" "));
-}
-
-
-
-
-  if (cmd === `${prefix}embedsay`){
- 		message.delete()
-         const embed = new Discord.RichEmbed()
- 		.setColor(0x4d433e)
- 		.setDescription(args.join(" "));
- 		message.channel.send({embed})
-}
-
-
-
-
-  if (cmd === `${prefix}embed`){
- 		message.delete()
-         const embed = new Discord.RichEmbed()
- 		.setColor(0xaa1b1b)
- 		.setDescription(args.join(" "));
- 		message.channel.send({embed})
-}
-
-
-
-
   if (cmd === `${prefix}vote`){
  		message.delete()
   let question = args.slice(0).join(" ");
@@ -280,6 +238,105 @@ bot.on("message", async message => {
  		message.delete()
  		message.channel.send(args.join(" "));
 }
+
+
+
+  if (cmd === `${prefix}whitesay`){
+ 		message.delete()
+         const embed = new Discord.RichEmbed()
+ 		.setColor(0xFFFFFF)
+ 		.setDescription(args.join(" "));
+ 		message.channel.send({embed})
+}
+
+  if (cmd === `${prefix}grayesay`){
+ 		message.delete()
+         const embed = new Discord.RichEmbed()
+ 		.setColor(0x808080)
+ 		.setDescription(args.join(" "));
+ 		message.channel.send({embed})
+}
+
+  if (cmd === `${prefix}blacksay`){
+ 		message.delete()
+         const embed = new Discord.RichEmbed()
+ 		.setColor(0x000000)
+ 		.setDescription(args.join(" "));
+ 		message.channel.send({embed})
+}
+
+  if (cmd === `${prefix}grayesay`){
+ 		message.delete()
+         const embed = new Discord.RichEmbed()
+ 		.setColor(0xFF0000)
+ 		.setDescription(args.join(" "));
+ 		message.channel.send({embed})
+}
+
+  if (cmd === `${prefix}redsay`){
+ 		message.delete()
+         const embed = new Discord.RichEmbed()
+ 		.setColor(0xFF0000)
+ 		.setDescription(args.join(" "));
+ 		message.channel.send({embed})
+}
+
+  if (cmd === `${prefix}yellowesay`){
+ 		message.delete()
+         const embed = new Discord.RichEmbed()
+ 		.setColor(0xFFFF00)
+ 		.setDescription(args.join(" "));
+ 		message.channel.send({embed})
+}
+
+  if (cmd === `${prefix}lightgreensay`){
+ 		message.delete()
+         const embed = new Discord.RichEmbed()
+ 		.setColor(0x00FF00)
+ 		.setDescription(args.join(" "));
+ 		message.channel.send({embed})
+}
+
+  if (cmd === `${prefix}darkgreenesay`){
+ 		message.delete()
+         const embed = new Discord.RichEmbed()
+ 		.setColor(0x008000)
+ 		.setDescription(args.join(" "));
+ 		message.channel.send({embed})
+}
+
+  if (cmd === `${prefix}lightbluesay`){
+ 		message.delete()
+         const embed = new Discord.RichEmbed()
+ 		.setColor(0x00FFFF)
+ 		.setDescription(args.join(" "));
+ 		message.channel.send({embed})
+}
+
+  if (cmd === `${prefix}bluesay`){
+ 		message.delete()
+         const embed = new Discord.RichEmbed()
+ 		.setColor(0x0000FF)
+ 		.setDescription(args.join(" "));
+ 		message.channel.send({embed})
+}
+
+  if (cmd === `${prefix}pinksay`){
+ 		message.delete()
+         const embed = new Discord.RichEmbed()
+ 		.setColor(0xFF00FF)
+ 		.setDescription(args.join(" "));
+ 		message.channel.send({embed})
+}
+
+  if (cmd === `${prefix}purplesay`){
+ 		message.delete()
+         const embed = new Discord.RichEmbed()
+ 		.setColor(0x800080)
+ 		.setDescription(args.join(" "));
+ 		message.channel.send({embed})
+}
+
 
 
 
