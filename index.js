@@ -251,18 +251,18 @@ bot.on("message", async message => {
 
 
 
-  if (cmd === `${prefix}poll`){
+  if (cmd === `${prefix}vote`){
  		//message.delete()
   let question = args.slice(0).join(" ");
 
   if (args.length === 0)
-  return message.reply('Invalid Format: /Poll <Question>')
+  return message.reply('Invalid Format: /vote <Question>')
 
   const embed = new Discord.RichEmbed()
-  .setTitle("A Poll Has Been Started!")
+  .setTitle("A Vote Has Been Started!")
   .setColor("#5599ff")
     .setDescription(`${question}`)
-    .setFooter(`Poll Started By: ${message.author.username}`, `${message.author.avatarURL}`)
+    .setFooter(`Vote Started By: ${message.author.username}`, `${message.author.avatarURL}`)
   const pollTopic = await message.channel.send({embed});
   await pollTopic.react(`✅`);
   await pollTopic.react(`❌`);
