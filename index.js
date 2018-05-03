@@ -173,7 +173,7 @@ bot.on("message", async message => {
 
 
   if (cmd("unmute")) { // creates the command unmute
-      if (!message.member.permissions.has(r => "MANAGE_ROLES") //if ain't MANAGE_ROLES perm to the message mem perms
+      if (!message.member.permissions.has(r => "MANAGE_ROLES")) //if ain't MANAGE_ROLES perm to the message mem perms
           {
           return message.reply("You can\'t unmute his becuase you don't have the \`MANAGE_ROLES\` ")
           }
@@ -189,7 +189,6 @@ bot.on("message", async message => {
           .catch(error => message.reply(`Sorry ${message.author} I couldn't mute because of : ${error}`)); //if error, display error
       }
       message.reply(`${unmutedmember.user} has been unmuted by ${message.author}! \nWith the reason: ${reason}`); // sends a message saying he was kicked
-  }
 }
 
 
@@ -321,7 +320,7 @@ bot.on("message", async message => {
   }
 
     
-if(cmd(`avatar`))) { //IF for the command.
+if(cmd(`avatar`)) { //IF for the command.
      if(message.mentions.users.first()) { //Check if the message has a mention in it.
            let user = message.mentions.users.first(); //Since message.mentions.users returns a collection; we must use the first() method to get the first in the collection.
            let output = user.tag /*Nickname and Discriminator*/ +
@@ -332,7 +331,7 @@ if(cmd(`avatar`))) { //IF for the command.
     }
     
         if(message.author.bot) return;
-    
+}
     var re =  /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi.exec(message.cleanContent);
     
     if(re != null){
@@ -341,18 +340,14 @@ if(cmd(`avatar`))) { //IF for the command.
         });
     }
     
-      if (msg.content === '/ping') {
+      if (cmd(`ping`)) {
     msg.reply(`Pong! The ping is **${(bot.ping).toFixed(0)}**ms!  :ping_pong:`)
   }
     
-  if (msg.content === '/help') {
+  if (cmd(`help`)) {
     msg.reply(`Check your dms`)
   }
     
-  if (msg.content === '/avatar') {
-    msg.reply(`You need Mention someone`)
-  }
-}
     
     
 });
