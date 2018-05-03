@@ -35,7 +35,7 @@ bot.on('guildMemberRemove', member => {
   channel.send(`${member}, left the Server`);
 });
 
-bot.on("message", async message => {
+bot.on("message", message => {
   if(message.author.bot) return;
   if(message.channel.type === "dm") return;
 
@@ -45,7 +45,7 @@ bot.on("message", async message => {
     
     // if message
   function cmd(p1) {
-      message.content.startsWith(prefix + p1)
+      message.content.startsWith(prefix + p1.toString())
   };
     
   let args = messageArray.slice(1);
