@@ -170,7 +170,7 @@ bot.on("message", async message => {
   if (cmd("unmute")) { // creates the command unmute
       if (!message.member.permissions.has(r => "MANAGE_ROLES")) //if ain't MANAGE_ROLES perm to the message mem perms
           {
-          return message.reply("You can\'t unmute his becuase you don't have the \`MANAGE_ROLES\` ")
+          return message.reply("You can't une this becuase you don't have the `MANAGE_ROLES` ")
           }
       
       let unmutedmember = message.mentions.members.first(); // sets the mentioned user to the var kickedmember
@@ -337,7 +337,7 @@ bot.on("message", async message => {
         });
     let r = message.guild.roles.find(r => r.name === "Muted");
     let rid = r.id
-        message.guild.channels.forEach(a => a.overwritePermissions(r.id, {SEND_MESSAGES: false,ADD_REACTIONS: false}));
+        message.guild.channels.forEach(a => a.overwritePermissions(r.id, {SEND_MESSAGES: false, ADD_REACTIONS: false}));
     }
 
     if(toMute.roles.has(role.id)) return message.reply('This User Airedy Muted');
