@@ -252,6 +252,7 @@ bot.on("message", async message => {
 
 
   if (cmd === `${prefix}poll`){
+ 		message.delete()
   let question = args.slice(0).join(" ");
 
   if (args.length === 0)
@@ -264,8 +265,8 @@ bot.on("message", async message => {
     .setFooter(`Poll Started By: ${message.author.username}`, `${message.author.avatarURL}`)
   message.channel.send({embed})
   message.react('👍')
-  .then(() => embed.react('👎'))
-  .then(() => embed.react('🤷‍♂️'))
+  .then(() => message.react('👎'))
+  .then(() => message.react('🤷‍♂️'))
   .catch(() => console.error('Emoji failed to react.'));
 
 }
