@@ -266,7 +266,7 @@ bot.on("message", async message => {
   message.channel.send({embed})
   const pollTopic = await message.channel.send(message.content.slice(2));
   await pollTopic.react(`✅`);
-  await pollTopic.react(`⛔`);
+  await pollTopic.react(`❌`);
   const filter = (reaction) => reaction.emoji.name === '✅';
   const collector = pollTopic.createReactionCollector(filter, { time: 15000 });
   collector.on('collect', r => console.log(`Collected ${r.emoji.name}`));
