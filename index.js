@@ -337,10 +337,6 @@ if(cmd(`avatar`)) { //IF for the command.
     msg.reply(`Pong! The ping is **${(bot.ping).toFixed(0)}**ms!  :ping_pong:`)
   }
     
-  if (cmd(`help`)) {
-    msg.reply(`Check your dms`)
-  }
-    
     
     
 });
