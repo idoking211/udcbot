@@ -346,5 +346,4 @@ if(cmd(`avatar`)) { //IF for the command.
 });
 
 
-
 bot.login(process.env.BOT_TOKEN);
