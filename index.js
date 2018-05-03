@@ -299,7 +299,7 @@ bot.on("message", async message => {
     .addField("/serverinfo", "Server Informations.")
     .addField("/botinfo", "Bot Informations.")
     .addField("/membercount", "Member Count.")
-    .addField("/poll (question)", "Vote about Question")
+    .addField("/vote (question)", "Vote about Question")
     .addField("/say (message)", "say your message.")
     .addField("/esay (message)", "say your embed message.")
     .addField("/avatar @user", "Avatar of the user.")
