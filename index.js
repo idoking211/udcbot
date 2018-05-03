@@ -341,8 +341,7 @@ if(cmd(`avatar`)) { //IF for the command.
     message.reply(`Check your dms`)
   }
     
-    
- }   
+      
 });
 
 
