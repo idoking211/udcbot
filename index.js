@@ -297,7 +297,7 @@ bot.on("message", async message => {
  		message.channel.send({embed})
 }
 
-  if (cmd === `${prefix}darkgreenesay`){
+  if (cmd === `${prefix}darkgreensay`){
  		message.delete()
          const embed = new Discord.RichEmbed()
  		.setColor(0x008000)
