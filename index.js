@@ -253,7 +253,6 @@ bot.on("message", async message => {
 
   if (cmd === `${prefix}poll`){
   let question = args.slice(0).join(" ");
- 		message.delete()
 
   if (args.length === 0)
   return message.reply('Invalid Format: /Poll <Question>')
@@ -264,8 +263,9 @@ bot.on("message", async message => {
     .setDescription(`${question}`)
     .setFooter(`Poll Started By: ${message.author.username}`, `${message.author.avatarURL}`)
   message.channel.send({embed})
-  embed.react('👍')
-  .then(() => embed.react('👎'))
+  message.react('👍')
+  .then(() => message.react('👎'))
+  .then(() => message.react('🤷‍♂️'))
   .catch(() => console.error('Emoji failed to react.'));
 
 }
