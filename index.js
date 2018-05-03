@@ -301,7 +301,7 @@ bot.on("message", async message => {
         });
     let r = message.guild.roles.find(r => r.name === "Muted");
     let rid = r.id
-        message.guild.channels.forEach(a => a.overwritePermissions(r.id, {SEND_MESSAGES: false,ADD_REACTIONS: false});)
+        message.guild.channels.forEach(a => a.overwritePermissions(r.id, {SEND_MESSAGES: false,ADD_REACTIONS: false}));
     }
 
     if(toMute.roles.has(role.id)) return message.reply('This User Airedy Muted');
