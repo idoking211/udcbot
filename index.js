@@ -1,24 +1,31 @@
 const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
-const prefix = botconfig.prefix;
+
 const bot = new Discord.Client({disableEveryone: true});
 
-const swearWords = ["darn", "shucks", "frak", "shite", "arse", "ass", "asshole", "bastard", "bitch", "bollocks", "child-fucker", "Christ on a bike", "Christ on a cracker", "crap", "cunt", "damn", "frigger", "fuck", "goddamn", "godsdamn", "hell", "holy shit", "Jesus", "Jesus Christ", "Jesus H. Christ", "Jesus Harold Christ", "Jesus wept", "Jesus", "Mary and Joseph", "Judas Priest", "motherfucker", "nigga", "nigger", "shit", "shit ass", "shitass", "son of a bitch", "son of a motherless goat", "son of a whore", "sweet Jesus", "twat", "Can i suck your boobs", "Carpet muncher", "Choking your chicken", "Cock eyed Cunt.", "Cock muncher", "Cocklump", "Colder than a witches titty in a brass bra", "Creampie", "Cretinous cunting fuckhead", "Cum", "Cum Dumpster", "Cum on your face", "Cuntface", "can i fuck you from behind", "chimney sweeper", "chutney ferret", "cockeye", "coral stomper", "crotte", "cum dumpster", "cuntlapper", "cus", "Ai sat (directed at a man)", "Ain't", "Arrogant, Gum-chewing fat cunt", "As much use as a chocolate teapot", "a-hole", "arse bandit", "arvind kejriwal", "ask me bollix"];
+const swearWords = ["fuck"];
+ 
+//bot.on("ready", async () => {
+  //console.log(`${bot.user.username} is online!`);
+
+  //bot.user.setActivity("bots", {type: "MAKING"});
+
+  //bot.user.setGame("${server} Servers | /help");
 
 bot.on("ready", async () => {
   console.log(`Bot is Online!`);
-    setInterval(function(){ bot.user.setActivity(`${bot.guilds.size} servers | /help`, {type: "WATCHING"}); }, 3000);
+bot.user.setActivity(`${bot.guilds.size} servers | /help`, {type: "WATCHING"});
 });
 
 // Updates the bot's status if he joins a server
 bot.on("guildCreate", guild => {
-// bot.user.setActivity(`${bot.guilds.size} servers | /help`, {type: "WATCHING"});
+bot.user.setActivity(`${bot.guilds.size} servers | /help`, {type: "WATCHING"});
 });
 
 /// Updates the bot's status if he leaves a servers
 bot.on("guildDelete", guild => {
- //bot.user.setActivity(
-//        `${bot.guilds.size} servers | /help`, {type: "WATCHING"});
+bot.user.setActivity(
+        `${bot.guilds.size} servers | /help`, {type: "WATCHING"});
 });
 
 //welcome join
@@ -40,18 +47,13 @@ bot.on("message", async message => {
   if(message.channel.type === "dm") return;
 
 
-
+  let prefix = botconfig.prefix;
   let messageArray = message.content.split(" ");
-    
-    // if message
-  function cmd(p1) {
-      message.content.startsWith(prefix + p1.toString())
-  };
-    
+  let cmd = messageArray[0];
   let args = messageArray.slice(1);
 
 
-  if(cmd("kick")){
+  if(cmd === `${prefix}kick`){
 
     //!kick @daeshan askin for it
 
@@ -89,7 +91,7 @@ bot.on("message", async message => {
 //}
 
 
-  if(cmd(`ban`)){
+  if(cmd === `${prefix}ban`){
 
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("/ban (@user) (time) (reason)\n** **\n**Example:**\n** **\n/ban <@!440182142207655947> break the rules\n** **\nits will ban the user for one hour for brekaing the rules");
@@ -117,7 +119,7 @@ bot.on("message", async message => {
   }
 
 
-  if(cmd(`report`)){
+  if(cmd === `${prefix}report`){
 
     //!report @ned this is the reason
 
@@ -147,7 +149,7 @@ bot.on("message", async message => {
 
  
 
-  if(cmd(`serverinfo`)){
+  if(cmd === `${prefix}serverinfo`){
 
     let sicon = message.guild.iconURL;
     let serverembed = new Discord.RichEmbed()
@@ -187,10 +189,11 @@ bot.on("message", async message => {
 
 
 
-  if(cmd(`membercount`)){
+
+  if(cmd === `${prefix}membercount`){
 
     let sicon = message.guild.iconURL;
-    const serverembed = new Discord.RichEmbed()
+    let serverembed = new Discord.RichEmbed()
     .setDescription("**Member Count**")
     .setColor("#eb8f1b")
     .setThumbnail(sicon)
@@ -202,7 +205,7 @@ bot.on("message", async message => {
 
 
 
-  if(cmd(`botinfo`)){
+  if(cmd === `${prefix}botinfo`){
 
     let bicon = bot.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
@@ -218,7 +221,7 @@ bot.on("message", async message => {
 
 
 
-  if (cmd(`sayembed`)){
+  if (cmd === `${prefix}esay`){
  		message.delete()
          const embed = new Discord.RichEmbed()
  		.setColor(0x4d433e)
@@ -229,17 +232,38 @@ bot.on("message", async message => {
 
 
 
-  if (cmd(`say`)){
+  if (cmd === `${prefix}asay`){
  		message.delete()
  		message.channel.send('@everyone');
  		message.channel.send(args.join(" "));
 }
 
-    
 
 
 
-  if (cmd(`poll`)){
+  if (cmd === `${prefix}embedsay`){
+ 		message.delete()
+         const embed = new Discord.RichEmbed()
+ 		.setColor(0x4d433e)
+ 		.setDescription(args.join(" "));
+ 		message.channel.send({embed})
+}
+
+
+
+
+  if (cmd === `${prefix}embed`){
+ 		message.delete()
+         const embed = new Discord.RichEmbed()
+ 		.setColor(0xaa1b1b)
+ 		.setDescription(args.join(" "));
+ 		message.channel.send({embed})
+}
+
+
+
+
+  if (cmd === `${prefix}poll`){
   let question = args.slice(0).join(" ");
 
   if (args.length === 0)
@@ -258,7 +282,19 @@ bot.on("message", async message => {
 
 }
 
-  if(cmd(`help`)){
+
+
+
+
+  if (cmd === `${prefix}say`){
+ 		message.delete()
+ 		message.channel.send(args.join(" "));
+}
+
+
+
+
+  if(cmd === `${prefix}help`){
 
     let bicon = bot.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
@@ -286,7 +322,7 @@ bot.on("message", async message => {
 
 
 
-  if(cmd(`mute`)){
+ if(cmd(`mute`)){
 
     if(!message.member.Permissions.has("MANAGE_MESSAGES")) return message.channel.send("You dont have permissions for that!");
 
@@ -312,8 +348,14 @@ bot.on("message", async message => {
     return;
   }
 
-    
-if(cmd(`avatar`)) { //IF for the command.
+});
+
+const prefix = botconfig.prefix;
+bot.on("message", (message) => {
+
+  if(!message.content.startsWith(prefix)) return;
+
+if(message.content.startsWith(prefix + "avatar ")) { //IF for the command.
      if(message.mentions.users.first()) { //Check if the message has a mention in it.
            let user = message.mentions.users.first(); //Since message.mentions.users returns a collection; we must use the first() method to get the first in the collection.
            let output = user.tag /*Nickname and Discriminator*/ +
@@ -322,27 +364,34 @@ if(cmd(`avatar`)) { //IF for the command.
     } else {
           message.reply("Invalid user."); //Reply with a mention saying "Invalid user."
     }
-    
-        if(message.author.bot) return;
-}
+  }});
+
+bot.on('message', msg => {
+  if (msg.content === '/ping') {
+    msg.reply(`Pong! The ping is **${(bot.ping).toFixed(0)}**ms!  :ping_pong:`)
+  }
+});
+
+bot.on('message', msg => {
+  if (msg.content === '/help') {
+    msg.reply(`Check your dms`)
+  }
+});
+
+bot.on('message', msg => {
+  if (msg.content === '/avatar') {
+    msg.reply(`You need Mention someone`)
+  }
+});
+
+bot.on('message', message => {
+    if(message.author.bot) return;
     var re =  /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi.exec(message.cleanContent);
-    
     if(re != null){
         message.delete().then(message => {
             message.reply('Links is not allowed here!');
         });
     }
-    
-      if (cmd(`ping`)) {
-    message.reply(`Pong! The ping is **${(bot.ping).toFixed(0)}**ms!  :ping_pong:`)
-  }
-    
-  if (cmd(`help`)) {
-    message.reply(`Check your dms`)
-  }
-    
-      
 });
-
 
 bot.login(process.env.BOT_TOKEN);
