@@ -342,7 +342,7 @@ if(cmd(`avatar`)) { //IF for the command.
   }
     
     
-    
+ }   
 });
 
 
