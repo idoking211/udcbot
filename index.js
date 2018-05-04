@@ -197,9 +197,9 @@ if( swearWords.some(word => message.content.includes(word)) ) {
     .setDescription(`${question}`)
     .setFooter(`Vote Started By: ${message.author.username}`, `${message.author.avatarURL}`)
   const pollTopic = await message.channel.send({embed});
-  await pollTopic.react(`✅`);
-  await pollTopic.react(`❌`);
-  const filter = (reaction) => reaction.emoji.name === '✅';
+  await pollTopic.react(`ג…`);
+  await pollTopic.react(`ג`);
+  const filter = (reaction) => reaction.emoji.name === 'ג…';
   const collector = pollTopic.createReactionCollector(filter, { time: 15000 });
   collector.on('collect', r => console.log(`Collected ${r.emoji.name}`));
   collector.on('end', collected => console.log(`Collected ${collected.size} items`));
@@ -367,31 +367,48 @@ if( swearWords.some(word => message.content.includes(word)) ) {
 
 });
 
-bot.on("message", msg => {
+const prefix = botconfig.prefix;
+bot.on("message", (message) => {
 
-  if (msg.content === '/avatar') { //IF for the command.
-     if(msg.mentions.users.first()) { //Check if the message has a mention in it.
-           let user = msg.mentions.users.first(); //Since message.mentions.users returns a collection; we must use the first() method to get the first in the collection.
+  if(!message.content.startsWith(prefix)) return;
+
+if(message.content.startsWith(prefix + "avatar ")) { //IF for the command.
+     if(message.mentions.users.first()) { //Check if the message has a mention in it.
+           let user = message.mentions.users.first(); //Since message.mentions.users returns a collection; we must use the first() method to get the first in the collection.
            let output = user.tag /*Nickname and Discriminator*/ +
            "\nAvatar URL: " + user.avatarURL; /*The Avatar URL*/
-           msg.channel.sendMessage(output); //We send the output in the current channel.
+           message.channel.sendMessage(output); //We send the output in the current channel.
     } else {
-          msg.reply("Invalid user.") //Reply with a mention saying "Invalid user."
-  }
+          message.reply("Invalid user."); //Reply with a mention saying "Invalid user."
+    }
+  }});
 
+bot.on('message', msg => {
   if (msg.content === '/ping') {
     msg.reply(`Pong! The ping is **${(bot.ping).toFixed(0)}**ms!  :ping_pong:`)
   }
+});
 
+bot.on('message', msg => {
   if (msg.content === '/help') {
     msg.reply(`Check your dms`)
   }
+});
 
-  if (msg.author.bot) return;
-  var re =  /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi.exec(msg.cleanContent);
-  if(re != null){
-      msg.delete().then(message => {
-          message.reply('Links is not allowed here!')
-      });
+bot.on('message', msg => {
+  if (msg.content === '/avatar') {
+    msg.reply(`You need Mention someone`)
+  }
+});
+
+bot.on('message', message => {
+    if(message.author.bot) return;
+    var re =  /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi.exec(message.cleanContent);
+    if(re != null){
+        message.delete().then(message => {
+            message.reply('Links is not allowed here!');
+        });
+    }
+});
 
 bot.login(process.env.BOT_TOKEN);
