@@ -313,7 +313,7 @@ if( swearWords.some(word => message.content.includes(word)) ) {
     .setDescription("Help Commands")
     .setColor("#268ccf")
     .setThumbnail(bicon)
-    .addField("Moderation","/kick (user) (reason) - Kick a User.")//"/ban (user) (reason) - Ban a User.","/report (user) (reason) - report about User.","/mute (user) (reason) - Mute a User.","/purge (number) - Clear the chat.")
+    .addField("Moderation","/kick (user) (reason) - Kick a User.\n/ban (user) (reason) - Ban a User.")//"/report (user) (reason) - report about User.","/mute (user) (reason) - Mute a User.","/purge (number) - Clear the chat.")
     .addField("Servers","/serverinfo - Server Informations.")//"/botinfo - Bot Informations.","/membercount - Member Count.","/say (message) - say your message.","/vote (question) - Vote about Question","/avatar @user - Avatar of the user.","/ping - Ping Pong");
 
     return message.author.send(botembed);
