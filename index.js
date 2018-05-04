@@ -368,22 +368,20 @@ if( swearWords.some(word => message.content.includes(word)) ) {
 });
 
 const prefix = botconfig.prefix;
-bot.on("message", (message) => {
+bot.on("message", msg => {
 
-  if(!message.content.startsWith(prefix)) return;
+  if(!msg.content.startsWith(prefix)) return;
 
-if(message.content.startsWith(prefix + "avatar ")) { //IF for the command.
-     if(message.mentions.users.first()) { //Check if the message has a mention in it.
-           let user = message.mentions.users.first(); //Since message.mentions.users returns a collection; we must use the first() method to get the first in the collection.
+if(msg.content.startsWith(prefix + "avatar ")) { //IF for the command.
+     if(msg.mentions.users.first()) { //Check if the message has a mention in it.
+           let user = msg.mentions.users.first(); //Since message.mentions.users returns a collection; we must use the first() method to get the first in the collection.
            let output = user.tag /*Nickname and Discriminator*/ +
            "\nAvatar URL: " + user.avatarURL; /*The Avatar URL*/
-           message.channel.sendMessage(output); //We send the output in the current channel.
+           msg.channel.sendMessage(output); //We send the output in the current channel.
     } else {
-          message.reply("Invalid user."); //Reply with a mention saying "Invalid user."
-    }
-  }});
+          msg.reply("Invalid user."); //Reply with a mention saying "Invalid user."
+  }
 
-bot.on('message', msg => {
   if (msg.content === '/ping') {
     msg.reply(`Pong! The ping is **${(bot.ping).toFixed(0)}**ms!  :ping_pong:`)
   }
@@ -397,7 +395,7 @@ bot.on('message', msg => {
   }
 
   if (msg.author.bot) return;
-  var re =  /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi.exec(message.cleanContent);
+  var re =  /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi.exec(msg.cleanContent);
   if(re != null){
       msg.delete().then(message => {
           message.reply('Links is not allowed here!');
