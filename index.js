@@ -367,7 +367,6 @@ if( swearWords.some(word => message.content.includes(word)) ) {
 
 });
 
-const prefix = botconfig.prefix;
 bot.on("message", msg => {
 
   if(!msg.content.startsWith(prefix)) return;
