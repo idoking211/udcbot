@@ -290,6 +290,11 @@ if( swearWords.some(word => message.content.includes(word)) ) {
  		message.channel.send({embed})
 }
 
+  if (cmd === `${prefix}purge 5`){
+            message.channel.bulkDelete(5)
+            message.channel.send("5 Messages Deleted!")
+}
+
   if (cmd === `${prefix}pinksay`){
  		message.delete()
          const embed = new Discord.RichEmbed()
