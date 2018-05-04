@@ -391,9 +391,7 @@ bot.on("message", msg => {
   var re =  /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi.exec(msg.cleanContent);
   if(re != null){
       msg.delete().then(message => {
-          message.reply('Links is not allowed here!');
+          message.reply('Links is not allowed here!')
       });
-    }
-}};
 
 bot.login(process.env.BOT_TOKEN);
