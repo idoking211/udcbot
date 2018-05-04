@@ -315,6 +315,7 @@ if( swearWords.some(word => message.content.includes(word)) ) {
     .setThumbnail(bicon)
     .addField("Moderation","/kick (user) (reason) - Kick a User.\n/ban (user) (reason) - Ban a User.\n/unban (user) - unban a User. (Soon)\n/report (user) (reason) - report about User.\n/mute (user) (reason) - Mute a User.\n/unmute (user) (reason) - unMute a User. (Soon)\n/warn (user) (reason) - Warn a User. (Soon)\n/purge (number) - Clear the chat. (Soon)")
     .addField("Servers","/serverinfo - Server Informations.\n/botinfo - Bot Informations.\n/membercount - Member Count.\n/say (message) - say your message.\n/vote (question) - Vote about Question\n/avatar @user - Avatar of the user.\n/ping - Ping Pong")
+    .addField("Economy","Soon")
     .addField("NSFW","Soon")
     .addField("Music","Soon")
     .addField("Leveling","Soon");
