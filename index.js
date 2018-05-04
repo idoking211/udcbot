@@ -371,7 +371,7 @@ bot.on("message", msg => {
 
   if(!msg.content.startsWith(prefix)) return;
 
-if(msg.content.startsWith(prefix + "avatar ")) { //IF for the command.
+  if (msg.content === '/avatar') { //IF for the command.
      if(msg.mentions.users.first()) { //Check if the message has a mention in it.
            let user = msg.mentions.users.first(); //Since message.mentions.users returns a collection; we must use the first() method to get the first in the collection.
            let output = user.tag /*Nickname and Discriminator*/ +
@@ -387,10 +387,6 @@ if(msg.content.startsWith(prefix + "avatar ")) { //IF for the command.
 
   if (msg.content === '/help') {
     msg.reply(`Check your dms`)
-  }
-
-  if (msg.content === '/avatar') {
-    msg.reply(`You need Mention someone`)
   }
 
   if (msg.author.bot) return;
