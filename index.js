@@ -314,7 +314,10 @@ if( swearWords.some(word => message.content.includes(word)) ) {
     .setColor("#268ccf")
     .setThumbnail(bicon)
     .addField("Moderation","/kick (user) (reason) - Kick a User.\n/ban (user) (reason) - Ban a User.\n/report (user) (reason) - report about User.\n/mute (user) (reason) - Mute a User.\n/purge (number) - Clear the chat.")
-    .addField("Servers","/serverinfo - Server Informations.\n/botinfo - Bot Informations.\n/membercount - Member Count.\n/say (message) - say your message.\n/vote (question) - Vote about Question\n/avatar @user - Avatar of the user.\n/ping - Ping Pong");
+    .addField("Servers","/serverinfo - Server Informations.\n/botinfo - Bot Informations.\n/membercount - Member Count.\n/say (message) - say your message.\n/vote (question) - Vote about Question\n/avatar @user - Avatar of the user.\n/ping - Ping Pong")
+    .addField("NSFW","Soon")
+    .addField("Music","Soon")
+    .addField("Leveling","Soon");
 
     return message.author.send(botembed);
   }
