@@ -83,12 +83,12 @@ bot.on("message", async message => {
 
 
 
-//if( swearWords.some(word => message.content.includes(word)) ) {
-     //message.delete();
-  //message.reply("Oh no you said a bad word!!!");
-  // Or just do message.delete();
-//await message.delete();
-//}
+if( swearWords.some(word => message.content.includes(word)) ) {
+     message.delete();
+  message.reply("Oh no you said a bad word!!!");
+   Or just do message.delete();
+await message.delete();
+}
 
 
   if(cmd === `${prefix}ban`){
