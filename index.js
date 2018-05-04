@@ -290,7 +290,7 @@ if( swearWords.some(word => message.content.includes(word)) ) {
  		message.channel.send({embed})
 }
 
-  if (cmd === `${prefix}purge 5`){
+  if (cmd === `${prefix}purge`){
      if (!suffix) {
     var newamount = "2";
   } else {
