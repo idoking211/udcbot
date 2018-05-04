@@ -306,6 +306,10 @@ if( swearWords.some(word => message.content.includes(word)) ) {
  		message.channel.send({embed})
 }
 
+  if (cmd === `${prefix}creator`){
+ 		message.channel.send("**Creators of the Bot:** Derpy [MIG] ⚒#6522, loltrolol55 [Rottax] ⚒#5546\n\n**Helping on Development on the Bot:** ! 𝓟𝓲𝓷𝓴𝓝𝓲𝓷𝓳𝓪™#6194")
+}
+
   if(cmd === `${prefix}help`){
 
     let bicon = bot.user.displayAvatarURL;
