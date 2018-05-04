@@ -313,20 +313,8 @@ if( swearWords.some(word => message.content.includes(word)) ) {
     .setDescription("Help Commands")
     .setColor("#268ccf")
     .setThumbnail(bicon)
-    .addField("/kick (user) (reason)", "Kick a User.")
-    .addField("/ban (user) (reason)", "Ban a User.")
-    .addField("/report (user) (reason)", "report about User.")
-    .addField("/mute (user) (reason)", "Mute a User")
-    .addField("/purge (number)", "Clear the chat")
-    .addField("/serverinfo", "Server Informations.")
-    .addField("/botinfo", "Bot Informations.")
-    .addField("/membercount", "Member Count.")
-    .addField("/vote (question)", "Vote about Question")
-    .addField("/say (message)", "say your message.")
-    .addField("/esay (message)", "say your embed message.")
-    .addField("/avatar @user", "Avatar of the user.")
-    .addField("/ping", "Ping Pong")
-    .addField("/help", "Show this Menu");
+    .addField("Moderation","/kick (user) (reason) - Kick a User.","/ban (user) (reason) - Ban a User.","/report (user) (reason) - report about User.","/mute (user) (reason) - Mute a User.","/purge (number) - Clear the chat.")
+    .addField("Servers","/serverinfo - Server Informations.","/botinfo - Bot Informations.","/membercount - Member Count.","/say (message) - say your message.","/vote (question) - Vote about Question","/avatar @user - Avatar of the user.","/ping - Ping Pong");
 
     return message.author.send(botembed);
   }
