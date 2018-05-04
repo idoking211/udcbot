@@ -369,8 +369,6 @@ if( swearWords.some(word => message.content.includes(word)) ) {
 
 bot.on("message", msg => {
 
-  if(!msg.content.startsWith(prefix)) return;
-
   if (msg.content === '/avatar') { //IF for the command.
      if(msg.mentions.users.first()) { //Check if the message has a mention in it.
            let user = msg.mentions.users.first(); //Since message.mentions.users returns a collection; we must use the first() method to get the first in the collection.
@@ -396,6 +394,6 @@ bot.on("message", msg => {
           message.reply('Links is not allowed here!');
       });
     }
-});
+}};
 
 bot.login(process.env.BOT_TOKEN);
