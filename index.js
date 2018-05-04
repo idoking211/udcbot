@@ -378,7 +378,7 @@ if(msg.content.startsWith(prefix + "avatar ")) { //IF for the command.
            "\nAvatar URL: " + user.avatarURL; /*The Avatar URL*/
            msg.channel.sendMessage(output); //We send the output in the current channel.
     } else {
-          msg.reply("Invalid user."); //Reply with a mention saying "Invalid user."
+          msg.reply("Invalid user.") //Reply with a mention saying "Invalid user."
   }
 
   if (msg.content === '/ping') {
