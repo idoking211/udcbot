@@ -46,17 +46,14 @@ bot.on("message", async message => {
   if(message.author.bot) return;
   if(message.channel.type === "dm") return;
 
-
   let prefix = botconfig.prefix;
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
 
-
   if(cmd === `${prefix}kick`){
 
-    //!kick @daeshan askin for it
-
+    //!kick @user break the rules
     let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!kUser) return message.channel.send("/kick (@user) (time) (reason)\n** **\n**Example:**\n** **\n/kick <@!440182142207655947> break the rules\n** **\nits will kick the user for brekaing the rules");
     let kReason = args.join(" ").slice(22);
@@ -81,14 +78,11 @@ bot.on("message", async message => {
     return;
   }
 
-
-
 if( swearWords.some(word => message.content.includes(word)) ) {
      message.delete();
   message.reply("Oh no you said a bad word!!!");
   //Or just do message.delete();
 }
-
 
   if(cmd === `${prefix}ban`){
 
@@ -113,15 +107,12 @@ if( swearWords.some(word => message.content.includes(word)) ) {
     message.guild.member(bUser).ban(bReason);
     incidentchannel.send(banEmbed);
 
-
     return;
   }
 
-
   if(cmd === `${prefix}report`){
 
-    //!report @ned this is the reason
-
+    //!report @user this is the reason
     let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!rUser) return message.channel.send("/report (@user) (reason)\n** **\n**Example:**\n** **\n/report <@!440182142207655947> break the rules\n** **\nits will report the user for brekaing the rules");
     let rreason = args.join(" ").slice(22);
@@ -138,15 +129,11 @@ if( swearWords.some(word => message.content.includes(word)) ) {
     let reportschannel = message.guild.channels.find(`name`, "mod-log");
     if(!reportschannel) return message.channel.send("Couldn't find mod-log channel.");
 
-
     message.delete().catch(O_o=>{});
     reportschannel.send(reportEmbed);
 
     return;
   }
-
-
- 
 
   if(cmd === `${prefix}serverinfo`){
 
@@ -163,9 +150,6 @@ if( swearWords.some(word => message.content.includes(word)) ) {
     return message.channel.send(serverembed);
   }
 
-
-
-
   if (cmd === `${prefix}unmute`) { // creates the command unmute
       if (!message.member.roles.some(r=>["Moderator"].includes(r.name)) ) return message.reply("Sorry, you do not have the permission to do this!"); // if author has no perms
       var unmutedmember = message.mentions.members.first(); // sets the mentioned user to the var kickedmember
@@ -174,8 +158,6 @@ if( swearWords.some(word => message.content.includes(word)) ) {
           .catch(error => message.reply(`Sorry ${message.author} I couldn't mute because of : ${error}`)); //if error, display error
       message.reply(`${unmutedmember.user} has been unmuted by ${message.author}!`); // sends a message saying he was kicked
   }
-
-
 
   if(cmd === `${prefix}membercount`){
 
@@ -189,9 +171,6 @@ if( swearWords.some(word => message.content.includes(word)) ) {
     return message.channel.send(serverembed);
   }
 
-
-
-
   if(cmd === `${prefix}botinfo`){
 
     let bicon = bot.user.displayAvatarURL;
@@ -204,9 +183,6 @@ if( swearWords.some(word => message.content.includes(word)) ) {
 
     return message.channel.send(botembed);
   }
-
-
-
 
   if (cmd === `${prefix}vote`){
  		message.delete()
@@ -229,16 +205,10 @@ if( swearWords.some(word => message.content.includes(word)) ) {
   collector.on('end', collected => console.log(`Collected ${collected.size} items`));
 }
 
-
-
-
-
   if (cmd === `${prefix}say`){
  		message.delete()
  		message.channel.send(args.join(" "));
 }
-
-
 
   if (cmd === `${prefix}whitesay`){
  		message.delete()
@@ -336,10 +306,6 @@ if( swearWords.some(word => message.content.includes(word)) ) {
  		message.channel.send({embed})
 }
 
-
-
-
-
   if(cmd === `${prefix}help`){
 
     let bicon = bot.user.displayAvatarURL;
@@ -364,9 +330,6 @@ if( swearWords.some(word => message.content.includes(word)) ) {
 
     return message.author.send(botembed);
   }
-
-
-
 
   if(cmd === `${prefix}mute`){
 
