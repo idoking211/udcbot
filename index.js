@@ -365,8 +365,6 @@ bot.on("message", (message) => {
 
   if(!message.content.startsWith(prefix)) return;
 
-bot.on("message", message => {
-  if (!message.content.startsWith(prefix)) return;
   if (message.author.bot) return;
 
   if (!points[message.author.id]) points[message.author.id] = {
