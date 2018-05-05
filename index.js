@@ -13,7 +13,7 @@ const swearWords = ["darn", "shucks", "frak", "shite", "arse", "ass", "asshole",
 
   //bot.user.setGame("${server} Servers | /help");
 
-bot.on("ready", async () => {
+bot.on("ready", async (bot, message, args) => {
   console.log(`Bot is Online!`);
 bot.user.setActivity(`${bot.guilds.size} servers | /help`, {type: "WATCHING"});
 });
@@ -51,8 +51,6 @@ bot.on("message", async message => {
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
-
-module.exports.run = async (bot, message, args) => {
 
   if(!xp[message.author.id]){
    xp[message.author.id] = {
