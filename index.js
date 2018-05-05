@@ -315,7 +315,7 @@ if( swearWords.some(word => message.content.includes(word)) ) {
  		 .addField("\nDevelopers","<@184706878876549131>\n<@333300250465009666>")
  		 .addField("Administrators",":rolling_eyes: No one Found :mag:")
  		 .addField("Moderators",":rolling_eyes: No one Found :mag:")
- 		 .addField("Helpers",":rolling_eyes: No one Found :mag:");
+ 		 .addField("Helpers","<@429011797291433987>");
 
     return message.channel.send(botembed);
 }
