@@ -308,19 +308,19 @@ if( swearWords.some(word => message.content.includes(word)) ) {
 
   if (cmd === `${prefix}staff`){
     let botembed = new Discord.RichEmbed()
-    .setDescription("**Staff Members**")
+    .setDescription("Staff Members")
     .setColor("#ff9f04")
-    .addField("Creators","<@!311604263379795970>\n<@362310398864654337>")
- 		 .addField("Developers","<@184706878876549131>\n<@333300250465009666>");
+    .addField("\nCreators","<@!311604263379795970>\n<@362310398864654337>")
+ 		 .addField("\nDevelopers","<@184706878876549131>\n<@333300250465009666>");
 
-    return message.author.send(botembed);
+    return message.channel.send(botembed);
 }
 
   if(cmd === `${prefix}help`){
 
     let bicon = bot.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
-    .setDescription("**Help Commands**")
+    .setDescription("Help Commands")
     .setColor("#268ccf")
     .setThumbnail(bicon)
     .addField("Moderation","/kick (user) (reason) - Kick a User.\n/ban (user) (reason) - Ban a User.\n/unban (user) - unban a User. (Soon)\n/report (user) (reason) - report about User.\n/mute (user) (reason) - Mute a User.\n/unmute (user) (reason) - unMute a User. (Soon)\n/warn (user) (reason) - Warn a User. (Soon)\n/purge (number) - Clear the chat. (Soon)")
