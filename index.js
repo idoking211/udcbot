@@ -1,6 +1,6 @@
 const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
-const prefix = botconfig.prefix;
+
 const bot = new Discord.Client({disableEveryone: true});
 
 const swearWords = ["darn", "shucks", "frak", "shite", "arse", "ass", "asshole", "bastard", "bitch", "bollocks", "child-fucker", "Christ on a bike", "Christ on a cracker", "crap", "cunt", "damn", "frigger", "fuck", "goddamn", "godsdamn", "hell", "holy shit", "Jesus", "Jesus Christ", "Jesus H. Christ", "Jesus Harold Christ", "Jesus wept", "Jesus", "Mary and Joseph", "Judas Priest", "motherfucker", "nigga", "nigger", "shit", "shit ass", "shitass", "son of a bitch", "son of a motherless goat", "son of a whore", "sweet Jesus", "twat", "Can i suck your boobs", "Carpet muncher", "Choking your chicken", "Cock eyed Cunt.", "Cock muncher", "Cocklump", "Colder than a witches titty in a brass bra", "Creampie", "Cretinous cunting fuckhead", "Cum", "Cum Dumpster", "Cum on your face", "Cuntface", "can i fuck you from behind", "chimney sweeper", "chutney ferret", "cockeye", "coral stomper", "crotte", "cum dumpster", "cuntlapper", "cus", "Ai sat (directed at a man)", "Ain't", "Arrogant, Gum-chewing fat cunt", "As much use as a chocolate teapot", "a-hole", "arse bandit", "arvind kejriwal", "ask me bollix"];
@@ -14,15 +14,18 @@ const swearWords = ["darn", "shucks", "frak", "shite", "arse", "ass", "asshole",
 
 bot.on("ready", async () => {
   console.log(`Bot is Online!`);
-  setInterval(function(){bot.user.setActivity(`${bot.guilds.size} servers | /help`, {type: "WATCHING"});}, 3000) //don't change it
+bot.user.setActivity(`${bot.guilds.size} servers | /help`, {type: "WATCHING"});
 });
 
 // Updates the bot's status if he joins a server
 bot.on("guildCreate", guild => {
+bot.user.setActivity(`${bot.guilds.size} servers | /help`, {type: "WATCHING"});
 });
 
 /// Updates the bot's status if he leaves a servers
 bot.on("guildDelete", guild => {
+bot.user.setActivity(
+        `${bot.guilds.size} servers | /help`, {type: "WATCHING"});
 });
 
 //welcome join
@@ -45,7 +48,7 @@ bot.on("message", async message => {
 
   let prefix = botconfig.prefix;
   let messageArray = message.content.split(" ");
-  let cmd = message.content
+  let cmd = messageArray[0];
   let args = messageArray.slice(1);
 
   if(cmd === `${prefix}kick`){
@@ -358,7 +361,14 @@ if( swearWords.some(word => message.content.includes(word)) ) {
     return;
   }
 
-if(cmd === `${prefix}avatar ") {  //IF for the command.
+});
+
+const prefix = botconfig.prefix;
+bot.on("message", (message) => {
+
+  if(!message.content.startsWith(prefix)) return;
+
+if(message.content.startsWith(prefix + "avatar ")) { //IF for the command.
      if(message.mentions.users.first()) { //Check if the message has a mention in it.
            let user = message.mentions.users.first(); //Since message.mentions.users returns a collection; we must use the first() method to get the first in the collection.
            let output = user.tag /*Nickname and Discriminator*/ +
@@ -367,16 +377,28 @@ if(cmd === `${prefix}avatar ") {  //IF for the command.
     } else {
           message.reply("Invalid user."); //Reply with a mention saying "Invalid user."
     }
-    
-      if (message.content === '/ping') {
-    message.reply('Pong! The ping is **${(bot.ping).toFixed(0)}**ms!  :ping_pong:')
-  }
-    
-  if (message.content === '/help') {
-    message.reply('Check your dms')
-  }
+  }});
 
-  if(message.author.bot) return;
+bot.on('message', msg => {
+  if (msg.content === '/ping') {
+    msg.reply(`Pong! The ping is **${(bot.ping).toFixed(0)}**ms!  :ping_pong:`)
+  }
+});
+
+bot.on('message', msg => {
+  if (msg.content === '/help') {
+    msg.reply(`Check your dms`)
+  }
+});
+
+bot.on('message', msg => {
+  if (msg.content === '/avatar') {
+    msg.reply(`You need Mention someone`)
+  }
+});
+
+bot.on('message', message => {
+    if(message.author.bot) return;
     var re =  /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi.exec(message.cleanContent);
     if(re != null){
         message.delete().then(message => {
@@ -384,6 +406,5 @@ if(cmd === `${prefix}avatar ") {  //IF for the command.
         });
     }
 });
-
 
 bot.login(process.env.BOT_TOKEN);
