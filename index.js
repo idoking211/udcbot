@@ -303,8 +303,8 @@ if( swearWords.some(word => message.content.includes(word)) ) {
  		message.channel.send({embed})
 }
 
-  if (cmd === `${prefix}creator`){
- 		message.channel.send("**Creators of the Bot:** Derpy [MIG] ⚒#6522, loltrolol55 [Rottax] ⚒#5546\n\n**Helping on Development on the Bot:** ! 𝓟𝓲𝓷𝓴𝓝𝓲𝓷𝓳𝓪™#6194")
+  if (cmd === `${prefix}staff`){
+ 		message.channel.send("**Creators:** Derpy [MIG] ⚒#6522, loltrolol55 [Rottax] ⚒#5546\n\n**Developers:** almog432007#0165, 🌟𝑶𝒓𝒊 | 𝓝𝓲𝓬𝓮𝓖𝓪𝓶𝓮𝓼🌟⚒#2030")
 }
 
   if(cmd === `${prefix}help`){
@@ -358,9 +358,7 @@ if( swearWords.some(word => message.content.includes(word)) ) {
     return;
   }
 
-  if(!message.content.startsWith(prefix)) return;
-
-if(message.content.startsWith(prefix + "avatar ")) { //IF for the command.
+if(cmd === `${prefix}avatar ") {  //IF for the command.
      if(message.mentions.users.first()) { //Check if the message has a mention in it.
            let user = message.mentions.users.first(); //Since message.mentions.users returns a collection; we must use the first() method to get the first in the collection.
            let output = user.tag /*Nickname and Discriminator*/ +
@@ -369,16 +367,16 @@ if(message.content.startsWith(prefix + "avatar ")) { //IF for the command.
     } else {
           message.reply("Invalid user."); //Reply with a mention saying "Invalid user."
     }
-}
     
       if (message.content === '/ping') {
-    message.reply(`Pong! The ping is **${(bot.ping).toFixed(0)}**ms!  :ping_pong:`)
+    message.reply('Pong! The ping is **${(bot.ping).toFixed(0)}**ms!  :ping_pong:')
   }
     
   if (message.content === '/help') {
-    message.reply(`Check your dms`)
+    message.reply('Check your dms')
   }
-        if(message.author.bot) return;
+
+  if(message.author.bot) return;
     var re =  /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi.exec(message.cleanContent);
     if(re != null){
         message.delete().then(message => {
