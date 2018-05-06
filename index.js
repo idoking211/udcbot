@@ -388,7 +388,7 @@ if( swearWords.some(word => message.content.includes(word)) ) {
       }
     }
 
-let muteEmbed = new Discord.RichEmbed()
+    let warnEmbed = new Discord.RichEmbed()
     .setDescription("Mutes")
     .setColor("#1b8fbd")
     .addField("Muted", `${rUser}`)
@@ -397,11 +397,11 @@ let muteEmbed = new Discord.RichEmbed()
     .addField("Time", message.createdAt)
     .addField("Reason", rreason);
 
-    let muteschannel = message.guild.channels.find(`name`, "mod-log");
-    if(!muteschannel) return message.channel.send("Couldn't find mod-log channel.");
+    let reportschannel = message.guild.channels.find(`name`, "mod-log");
+    if(!reportschannel) return message.channel.send("Couldn't find mod-log channel.");
 
     message.delete().catch(O_o=>{});
-    muteschannel.send(muteEmbed);
+    reportschannel.send(warnEmbed);
 
     if(toMute.roles.has(role.id)) return message.reply('This User Airedy Muted');
 
