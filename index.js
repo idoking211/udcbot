@@ -1,4 +1,5 @@
 const botconfig = require("./botconfig.json");
+const color = require("./color.json");
 const Discord = require("discord.js");
 
 const bot = new Discord.Client({disableEveryone: true});
@@ -238,7 +239,7 @@ if( swearWords.some(word => message.content.includes(word)) ) {
   if (cmd === `${prefix}whitesay`){
  		message.delete()
          const embed = new Discord.RichEmbed()
- 		.setColor(0xFFFFFF)
+ 		.setColor(color.white)
  		.setDescription(args.join(" "));
  		message.channel.send({embed})
 }
@@ -246,7 +247,7 @@ if( swearWords.some(word => message.content.includes(word)) ) {
   if (cmd === `${prefix}grayesay`){
  		message.delete()
          const embed = new Discord.RichEmbed()
- 		.setColor(0x808080)
+ 		.setColor(color.gray)
  		.setDescription(args.join(" "));
  		message.channel.send({embed})
 }
@@ -254,15 +255,7 @@ if( swearWords.some(word => message.content.includes(word)) ) {
   if (cmd === `${prefix}blacksay`){
  		message.delete()
          const embed = new Discord.RichEmbed()
- 		.setColor(0x000000)
- 		.setDescription(args.join(" "));
- 		message.channel.send({embed})
-}
-
-  if (cmd === `${prefix}graysay`){
- 		message.delete()
-         const embed = new Discord.RichEmbed()
- 		.setColor(0x808080)
+ 		.setColor(color.black)
  		.setDescription(args.join(" "));
  		message.channel.send({embed})
 }
@@ -270,7 +263,7 @@ if( swearWords.some(word => message.content.includes(word)) ) {
   if (cmd === `${prefix}redsay`){
  		message.delete()
          const embed = new Discord.RichEmbed()
- 		.setColor(0xFF0000)
+ 		.setColor(color.red)
  		.setDescription(args.join(" "));
  		message.channel.send({embed})
 }
@@ -278,7 +271,7 @@ if( swearWords.some(word => message.content.includes(word)) ) {
   if (cmd === `${prefix}yellowsay`){
  		message.delete()
          const embed = new Discord.RichEmbed()
- 		.setColor(0xFFFF00)
+ 		.setColor(color.yellow)
  		.setDescription(args.join(" "));
  		message.channel.send({embed})
 }
@@ -286,7 +279,7 @@ if( swearWords.some(word => message.content.includes(word)) ) {
   if (cmd === `${prefix}lightgreensay`){
  		message.delete()
          const embed = new Discord.RichEmbed()
- 		.setColor(0x00FF00)
+ 		.setColor(color.light_green)
  		.setDescription(args.join(" "));
  		message.channel.send({embed})
 }
@@ -294,7 +287,7 @@ if( swearWords.some(word => message.content.includes(word)) ) {
   if (cmd === `${prefix}darkgreensay`){
  		message.delete()
          const embed = new Discord.RichEmbed()
- 		.setColor(0x008000)
+ 		.setColor(color.dark_green)
  		.setDescription(args.join(" "));
  		message.channel.send({embed})
 }
@@ -302,7 +295,7 @@ if( swearWords.some(word => message.content.includes(word)) ) {
   if (cmd === `${prefix}lightbluesay`){
  		message.delete()
          const embed = new Discord.RichEmbed()
- 		.setColor(0x00FFFF)
+ 		.setColor(color.light_blue)
  		.setDescription(args.join(" "));
  		message.channel.send({embed})
 }
@@ -310,7 +303,7 @@ if( swearWords.some(word => message.content.includes(word)) ) {
   if (cmd === `${prefix}bluesay`){
  		message.delete()
          const embed = new Discord.RichEmbed()
- 		.setColor(0x0000FF)
+ 		.setColor(color.blue)
  		.setDescription(args.join(" "));
  		message.channel.send({embed})
 }
@@ -318,7 +311,7 @@ if( swearWords.some(word => message.content.includes(word)) ) {
   if (cmd === `${prefix}pinksay`){
  		message.delete()
          const embed = new Discord.RichEmbed()
- 		.setColor(0xFF00FF)
+ 		.setColor(color.pink)
  		.setDescription(args.join(" "));
  		message.channel.send({embed})
 }
@@ -326,7 +319,7 @@ if( swearWords.some(word => message.content.includes(word)) ) {
   if (cmd === `${prefix}purplesay`){
  		message.delete()
          const embed = new Discord.RichEmbed()
- 		.setColor(0x800080)
+ 		.setColor(color.purple)
  		.setDescription(args.join(" "));
  		message.channel.send({embed})
 }
