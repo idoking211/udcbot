@@ -388,11 +388,7 @@ if( swearWords.some(word => message.content.includes(word)) ) {
       }
     }
 
-    if(toMute.roles.has(role.id)) return message.reply('This User Airedy Muted');
-
-    await(toMute.addRole(role));
-
-    let muteEmbed = new Discord.RichEmbed()
+let muteEmbed = new Discord.RichEmbed()
     .setDescription("Mutes")
     .setColor("#1b8fbd")
     .addField("Muted", `${rUser}`)
@@ -406,6 +402,10 @@ if( swearWords.some(word => message.content.includes(word)) ) {
 
     message.delete().catch(O_o=>{});
     muteschannel.send(muteEmbed);
+
+    if(toMute.roles.has(role.id)) return message.reply('This User Airedy Muted');
+
+    await(toMute.addRole(role));
 
     return;
   }
