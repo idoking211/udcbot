@@ -138,24 +138,24 @@ if( swearWords.some(word => message.content.includes(word)) ) {
   if(cmd === `${prefix}warn`){
 
     //!warn @user this is the reason
-    let wUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!wUser) return message.channel.send("/warn (@user) (reason)\n** **\n**Example:**\n** **\n/warn <@!440182142207655947> break the rules\n** **\nits will warning the user for brekaing the rules");
-    let wreason = args.join(" ").slice(22);
+    let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(!rUser) return message.channel.send("/warn (@user) (reason)\n** **\n**Example:**\n** **\n/warn <@!440182142207655947> break the rules\n** **\nits will warning the user for brekaing the rules");
+    let rreason = args.join(" ").slice(22);
 
     let warnEmbed = new Discord.RichEmbed()
     .setDescription("Warnings")
     .setColor("#1b8fbd")
-    .addField("Warned", `${wUser}`)
+    .addField("Warned", `${rUser}`)
     .addField("Moderator", `${message.author}`)
     .addField("Channel", message.channel)
     .addField("Time", message.createdAt)
-    .addField("Reason", wreason);
+    .addField("Reason", rreason);
 
     let warningschannel = message.guild.channels.find(`name`, "mod-log");
     if(!warningschannel) return message.channel.send("Couldn't find mod-log channel.");
 
     message.delete().catch(O_o=>{});
-    reportschannel.send(warnEmbed);
+    warningschannel.send(warnEmbed);
 
     return;
   }
