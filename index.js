@@ -413,28 +413,15 @@ if( swearWords.some(word => message.content.includes(word)) ) {
 
   await(user.addRole(muterole.id));
 
-  if(cmd === `${prefix}unmute`){
-
-  if (!message.member.hasPermission('MANAGE_MESSAGES')) return errors.noPermissions(message, 'MANAGE_MESSAGES');
-
-  let user = message.guild.member(message.mentions.members.first());
-  if (!user) return errors.invalidUser(message);
-  if (user.hasPermission('MANAGE_MESSAGES')) return errors.cannotPunish(message);
-
+  setTimeout(function(){
+    user.removeRole(muterole.id);
     let embed = new Discord.RichEmbed()
     .setTitle('User has been Unmuted')
-    .setColor("#FFFF00")
+    .setColor(config.yellow)
     .addField('Muted User', `${user}`)
     auditlogchannel.send(embed);
   }, ms(time));
-
-  let auditlogchannel = message.guild.channels.find('name', 'mod-log');
-  if (!auditlogchannel) return errors.noLogChannel(message);
-
-  message.delete().catch(O_o=>{});
-  auditlogchannel.send(embed)
-
- await(user.removeRole(muterole.id));
+};
   }
 
 });
