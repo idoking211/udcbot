@@ -421,9 +421,7 @@ if( swearWords.some(word => message.content.includes(word)) ) {
     .addField('Muted User', `${user}`)
     auditlogchannel.send(embed);
   }, ms(time));
-};
-  }
-
+  };
 });
 
 const prefix = botconfig.prefix;
