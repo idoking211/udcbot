@@ -142,7 +142,7 @@ if( swearWords.some(word => message.content.includes(word)) ) {
     if(!rUser) return message.channel.send("/warn (@user) (reason)\n** **\n**Example:**\n** **\n/warn <@!440182142207655947> break the rules\n** **\nits will warning the user for brekaing the rules");
     let rreason = args.join(" ").slice(22);
 
-    let warnEmbed = new Discord.RichEmbed()
+    let reportEmbed = new Discord.RichEmbed()
     .setDescription("Warnings")
     .setColor("#1b8fbd")
     .addField("Warned", `${rUser}`)
@@ -151,11 +151,11 @@ if( swearWords.some(word => message.content.includes(word)) ) {
     .addField("Time", message.createdAt)
     .addField("Reason", rreason);
 
-    let warningschannel = message.guild.channels.find(`name`, "mod-log");
-    if(!warningschannel) return message.channel.send("Couldn't find mod-log channel.");
+    let reportschannel = message.guild.channels.find(`name`, "mod-log");
+    if(!reportschannel) return message.channel.send("Couldn't find mod-log channel.");
 
     message.delete().catch(O_o=>{});
-    warningschannel.send(warnEmbed);
+    reportschannel.send(reportEmbed);
 
     return;
   }
