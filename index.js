@@ -364,35 +364,63 @@ if( swearWords.some(word => message.content.includes(word)) ) {
 
   if(cmd === `${prefix}mute`){
 
-    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You dont have permissions for that!");
+   if (!message.member.hasPermission('MANAGE_MESSAGES')) return errors.noPermissions(message, 'MANAGE_MESSAGES');
 
-    let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
-    if(!toMute) return message.reply("Need Mention a User");
-    let role = message.guild.roles.find(r => r.name === "Muted");
-    if(!role){
-      try {
-        role = await message.guild.createRole({
-          name: "Muted",
-          color:"#000000",
-          permissions:[]
-        });
+  let user = message.guild.member(message.mentions.members.first());
+  if (!user) return errors.invalidUser(message);
+  if (user.hasPermission('MANAGE_MESSAGES')) return errors.cannotPunish(message);
 
-        message.guild.channels.forEach(async (channel, id) => {
-          await channel.overwritePermissions(role, {
-            SEND_MESSAGES: false,
-            ADD_REACTIONS: false
-          });
+  let reason = args.slice(1).join(" ");
+  if (!reason) return errors.invalidReason(message);
+
+  let muterole = message.guild.roles.find('name', 'Muted');
+  if (!muterole) {
+    try {
+      muterole = await message.guild.createRole({
+        name: 'Muted',
+        color: "#000000",
+        permissions:[]
+      })
+      message.guild.channels.forEach(async (channel, id) => {
+        await channel.overwritePermissions(muterole, {
+          SEND_MESSAGES: false,
+          ADD_REACTIONS: false,
+          SPEAK: false
         });
-      } catch (e) {
-        console.log(e.stack)
-      }
+      });
+    } catch(e) {
+      console.log(e.stack);
     }
+  };
 
-    if(toMute.roles.has(role.id)) return message.reply('This User Airedy Muted');
+  let time = args[1];
+  if (!time) return errors.invalidTime(message);
 
-    await(toMute.addRole(role));
+  let embed = new Discord.RichEmbed()
+  .setTitle('User has been Temporarily Muted')
+  .setColor("#FF0000")
+  .addField('Muted User', `${user}`, true)
+  .addField('Muted By', `${message.author}`, true)
+  .addField('Muted For', time)
+  .addField('Time', message.createdAt)
+  .addField('Reason', reason);
 
-    return;
+  let auditlogchannel = message.guild.channels.find('name', 'mod-log');
+  if (!auditlogchannel) return errors.noLogChannel(message);
+
+  message.delete().catch(O_o=>{});
+  auditlogchannel.send(embed)
+
+  await(user.addRole(muterole.id));
+
+  setTimeout(function(){
+    user.removeRole(muterole.id);
+    let embed = new Discord.RichEmbed()
+    .setTitle('User has been Unmuted')
+    .setColor("#FFFF00")
+    .addField('Muted User', `${user}`)
+    auditlogchannel.send(embed);
+  }, ms(time));
   }
 
 });
