@@ -332,10 +332,10 @@ if( swearWords.some(word => message.content.includes(word)) ) {
     .setColor("#ff9f04")
     .addField("\nCreators","<@311604263379795970>\n<@362310398864654337>")
     .addField("\nMini Creators","<@241793558737190913>")
- 		 .addField("\nDevelopers","<@184706878876549131>\n<@333300250465009666>")
+ 		 .addField("\nDevelopers","<@184706878876549131>\n<@333300250465009666>\n<@429011797291433987>")
  		 .addField("Administrators",":rolling_eyes: No one Found :mag:")
  		 .addField("Moderators",":rolling_eyes: No one Found :mag:")
- 		 .addField("Helpers","<@429011797291433987>");
+ 		 .addField("Helpers",":rolling_eyes: No one Found :mag:");
 
     return message.channel.send(botembed);
 }
