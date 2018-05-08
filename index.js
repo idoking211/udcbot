@@ -338,23 +338,6 @@ if( swearWords.some(word => message.content.includes(word)) ) {
     return message.channel.send(botembed);
 }
 
-  if(cmd === `${prefix}help`){
-
-    let bicon = bot.user.displayAvatarURL;
-    let botembed = new Discord.RichEmbed()
-    .setDescription("Help Commands")
-    .setColor("#268ccf")
-    .setThumbnail(bicon)
-    .addField("Moderation","/kick (user) (reason) - Kick a User.\n/ban (user) (reason) - Ban a User.\n/unban (user) - unban a User. (Soon)\n/report (user) (reason) - report about User.\n/mute (user) (reason) - Mute a User.\n/unmute (user) (reason) - unMute a User. (Soon)\n/warn (user) (reason) - Warn a User. (Soon)\n/purge (number) - Clear the chat. (Soon)")
-    .addField("Servers","/serverinfo - Server Informations.\n/botinfo - Bot Informations.\n/membercount - Member Count.\n/say (message) - say your message.\n/vote (question) - Vote about Question\n/avatar @user - Avatar of the user.\n/ping - Ping Pong")
-    .addField("Economy","Soon")
-    .addField("NSFW","Soon")
-    .addField("Music","Soon")
-    .addField("Leveling","Soon");
-
-    return message.author.send(botembed);
-  }
-
   if(cmd === `${prefix}userinfo`){
 
     let user = message.mentions.users.first();
@@ -413,6 +396,23 @@ if( swearWords.some(word => message.content.includes(word)) ) {
     footer: {
       icon_url: client.user.avatarURL,
       text: "MigServer Network"
+  }
+
+  if(cmd === `${prefix}help`){
+
+    let bicon = bot.user.displayAvatarURL;
+    let botembed = new Discord.RichEmbed()
+    .setDescription("Help Commands")
+    .setColor("#268ccf")
+    .setThumbnail(bicon)
+    .addField("Moderation","/kick (user) (reason) - Kick a User.\n/ban (user) (reason) - Ban a User.\n/unban (user) - unban a User. (Soon)\n/report (user) (reason) - report about User.\n/mute (user) (reason) - Mute a User.\n/unmute (user) (reason) - unMute a User. (Soon)\n/warn (user) (reason) - Warn a User. (Soon)\n/purge (number) - Clear the chat. (Soon)")
+    .addField("Servers","/serverinfo - Server Informations.\n/botinfo - Bot Informations.\n/membercount - Member Count.\n/say (message) - say your message.\n/vote (question) - Vote about Question\n/avatar @user - Avatar of the user.\n/ping - Ping Pong")
+    .addField("Economy","Soon")
+    .addField("NSFW","Soon")
+    .addField("Music","Soon")
+    .addField("Leveling","Soon");
+
+    return message.author.send(botembed);
   }
 
   if(cmd === `${prefix}mute`){
