@@ -338,66 +338,6 @@ if( swearWords.some(word => message.content.includes(word)) ) {
     return message.channel.send(botembed);
 }
 
-  if(cmd === `${prefix}userinfo`){
-
-    let user = message.mentions.users.first();
-    if (!user) {
-        return message.reply('/userinfo (user)');
-    }
-    const mentioneduser = message.mentions.users.first();
-    const joineddiscord = (mentioneduser.createdAt.getDate() + 1) + '-' + (mentioneduser.createdAt.getMonth() + 1) + '-' + mentioneduser.createdAt.getFullYear() + ' | ' + mentioneduser.createdAt.getHours() + ':' + mentioneduser.createdAt.getMinutes() + ':' + mentioneduser.createdAt.getSeconds();
-    let game;
-    if (user.presence.game === null) {
-        game = 'Not Playing.';
-    } else {
-        game = user.presence.game.name;
-    }
-    let messag;
-    if (user.lastMessage === null) {
-        messag = 'Noting';
-    } else {
-        messag = user.lastMessage;
-    }
-    let status;
-    if (user.presence.status === 'online') {
-        status = 'Online';
-    } else if (user.presence.status === 'dnd') {
-        status = 'Do No Disturb';
-    } else if (user.presence.status === 'idle') {
-        status = 'Idle';
-    } else if (user.presence.status === 'offline') {
-        status = 'Offline';
-    }
-    let stat;
-    if (user.presence.status === 'offline') {
-        stat = 0x000000;
-    } else if (user.presence.status === 'online') {
-        stat = 0x00AA4C;
-    } else if (user.presence.status === 'dnd') {
-        stat = 0x9C0000;
-    } else if (user.presence.status === 'idle') {
-        stat = 0xF7C035;
-    }
-  message.channel.send({embed: {
-    color: 3447003,
-    author: {
-      name: `information about ${user.username}`,
-      icon_url: user.displayAvatarURL
-    },
-    fields: [{
-        name: '**UserInfo:**',
-        value: `**Username:** ${user.tag}\n**Joined Discord:** ${joineddiscord}\n**Last message:** ${messag}\n**Playing:** ${game}\n**Status:** ${status}\n**Bot?** ${user.bot}`
-      },
-      {
-        name: 'DiscordInfo:',
-        value: `**Discriminator:** ${user.discriminator}\n**ID:** ${user.id}\n**Username:** ${user.username}`
-      },
-    ],
-    footer: {
-      icon_url: client.user.avatarURL,
-      text: "MigServer Network"
-  }
-
   if(cmd === `${prefix}help`){
 
     let bicon = bot.user.displayAvatarURL;
