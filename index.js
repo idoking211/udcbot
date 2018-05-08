@@ -4,7 +4,7 @@ const Discord = require("discord.js");
 
 const bot = new Discord.Client({disableEveryone: true});
 
-const swearWords = [swear.words];
+const swearWords = swear.words;
  
 //bot.on("ready", async () => {
   //console.log(`${bot.user.username} is online!`);
