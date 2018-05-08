@@ -1,11 +1,10 @@
 const botconfig = require("./botconfig.json");
 const color = require("./color.json");
-const swear = require("./swear.json");
 const Discord = require("discord.js");
 
 const bot = new Discord.Client({disableEveryone: true});
 
-const swearWords = [swear.words];
+const swearWords = ["fuck", "shit"];
  
 //bot.on("ready", async () => {
   //console.log(`${bot.user.username} is online!`);
