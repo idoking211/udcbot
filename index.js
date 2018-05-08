@@ -491,7 +491,7 @@ if(message.content.startsWith(prefix + "avatar ")) { //IF for the command.
     } else {
           message.reply("Invalid user."); //Reply with a mention saying "Invalid user."
     }
-  }});
+ }});
 
 bot.on('message', msg => {
   if (msg.content === '/ping') {
