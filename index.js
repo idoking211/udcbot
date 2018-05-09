@@ -430,15 +430,6 @@ if(message.content.startsWith(prefix + "avatar ")) { //IF for the command.
     } else {
           message.reply("Invalid user."); //Reply with a mention saying "Invalid user."
     }
-
-if(message.content.startsWith(prefix + "userinfo ")) { //IF for the command.
-     if(message.mentions.users.first()) { //Check if the message has a mention in it.
-           let user = message.mentions.users.first(); //Since message.mentions.users returns a collection; we must use the first() method to get the first in the collection.
-           let output = user.tag; /*The Avatar URL*/
-           message.channel.sendMessage(output); //We send the output in the current channel.
-    } else {
-          message.reply("Invalid user."); //Reply with a mention saying "Invalid user."
-    }
  }});
 
 bot.on('message', msg => {
