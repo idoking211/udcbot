@@ -270,8 +270,6 @@ if( swearWords.some(word => message.content.includes(word)) ) {
   auditlogchannel.send(embed)
 
   await(user.addRole(muterole.id));
-
-  setTimeout(function(){
   };
 });
 
