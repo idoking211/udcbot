@@ -24,14 +24,14 @@ bot.user.setActivity(
 
 //welcome join
 bot.on('guildMemberAdd', member => {
-  const channel = member.guild.channels.find('name', 'welcome');
+  const channel = member.guild.channels.find('name', 'suchpro‼');
   if (!channel) return;
   channel.send(`Welcome to the server, ${member}`);
 });
 
 //welcome left
 bot.on('guildMemberRemove', member => {
-  const channel = member.guild.channels.find('name', 'welcome');
+  const channel = member.guild.channels.find('name', 'suchpro‼');
   if (!channel) return;
   channel.send(`${member}, left the Server`);
 });
