@@ -272,13 +272,6 @@ if( swearWords.some(word => message.content.includes(word)) ) {
   await(user.addRole(muterole.id));
 
   setTimeout(function(){
-    user.removeRole(muterole.id);
-    let embed = new Discord.RichEmbed()
-    .setTitle('User has been Unmuted')
-    .setColor(config.yellow)
-    .addField('Muted User', `${user}`)
-    auditlogchannel.send(embed);
-  }, ms(time));
   };
 });
 
