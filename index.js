@@ -30,18 +30,12 @@ bot.on("guildDelete", guild => {
 bot.user.setActivity(`UnDeadCraft | /networkhelp`, {type: "PLAYING"});
 });
 
-client.on('guildMemberAdd', member => {
-    function send() {
-        let guild = member.guild;
-        let channel = guild.channels.find('name', 'hey_bye');
-        let user = member.user.tag;
-        let think = client.guilds.get('315214919190577154').emojis.find('name', `love`);
-        if (!channel) {
-            guild.createChannel('Hey_bye', 'text');
-        }
-        guild.channels.find('name', 'hey_bye').send(`${think} **${user}** has joined the server! ${think}`);
-    }
-  
+//welcome join
+bot.on('guildMemberAdd', member => {
+  const channel = member.guild.channels.find('name', 'welcome');
+  if (!channel) return;
+  channel.send(`Welcome to the server ${server}, ${member}`);
+});
 //add a role when joins
 
 var role = member.guild.roles.find('name', 'member');
